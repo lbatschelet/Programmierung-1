@@ -1,0 +1,13 @@
+.DS_store
+
+# Latex Editor Files
+*.aux
+*.fdb_latexmk
+*.fls
+*.listing
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+Zusammenfassung/_minted-P1_23HS_Zusammenfassung/

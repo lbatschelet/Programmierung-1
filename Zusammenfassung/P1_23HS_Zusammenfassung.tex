@@ -1,0 +1,1798 @@
+\documentclass[a4paper,10pt, dvipsnames]{report}
+
+\usepackage{bookmark}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{helvet}
+\usepackage{amsmath} % Für Mathe
+\usepackage{minted} % Für Codeblöcke
+\usepackage[most]{tcolorbox} % Für farbige Boxen
+\tcbuselibrary{minted} % tcolorbox Bibliothek für minted
+\usepackage{hyperref} % Für Hyperlinks
+\usepackage{geometry} % Für Seitenränder
+\usepackage[ngerman]{babel} % Für deutsche Sprache
+\usepackage{enumitem} % Für individuelle Listen
+\usepackage{xcolor} % Für Farben
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0},
+]{doclicense}
+
+
+\usepackage{fontawesome5}
+
+\makeatletter
+\newcommand{\github}[1]{%
+   \href{#1}{\faGithubSquare}%
+}
+\makeatother
+
+
+\titleformat{\chapter}[block]
+  {\normalfont\huge\bfseries}
+  {} % Kein Label wie "Kapitel"
+  {0pt}
+  {}
+
+\hypersetup{
+    colorlinks=true, % Färbt die Links statt einer Box um den Link
+    linkcolor=black,  % Farbe der internen Links
+    citecolor=green, % Farbe der Zitate
+    filecolor=magenta, % Farbe für Dateilinks
+    urlcolor=cyan   % Farbe der externen Links
+}
+
+\renewcommand\familydefault{\sfdefault}
+\geometry{a4paper, left=20mm, right=20mm, top=20mm, bottom=20mm}
+
+% tcolorbox Definition für Java-Codeblöcke
+\newtcblisting{javacodebox}[1][]{
+    listing engine=minted,
+    colframe=black!70,
+    listing only,
+    minted style=colorful,
+    minted language=java,
+    minted options={tabsize=2,#1},
+    left=1mm,
+    boxsep=2mm,
+    sharp corners,
+    enhanced
+}
+
+
+% tcolorbox Definition für Text-Codeblöcke
+\newtcblisting{textcodebox}[1][]{
+    listing engine=minted,
+    colback=ProcessBlue!20,
+    colframe=black!70,
+    listing only,
+    minted style=colorful,
+    minted language=text,
+    minted options={tabsize=2,#1},
+    left=1mm,
+    boxsep=2mm,
+    sharp corners,
+    enhanced
+}
+
+
+
+\title{Programmierung 1}
+\author{Lukas Batschelet (16-499-733)}
+\date{HS 2023}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        {\huge Programmierung 1}\\[0.5cm]
+        {\large PD Dr. Kaspar Riesen}\\[0.3cm]
+        {\LARGE Zusammenfassung \& Musterlösungen der Serien}\\[0.5cm]
+        {\large HS 2023}\\[2cm]
+        {\large Lukas Batschelet}\\[0.3cm]
+        {\normalfont 16-499-733}\\[0.3cm]
+    \end{center}
+    \vfill % Fügt vertikalen Abstand ein, um den Text nach unten zu verschieben
+    \noindent \github{https://github.com/lbatschelet/23HS_P1} Sämtliches Material ist auch auf GitHub abgelegt: \href{https://github.com/lbatschelet/23HS_P1}{https://github.com/lbatschelet/23HS\_P1}
+    \doclicenseThis
+\end{titlepage}
+
+\tableofcontents
+
+\part{Zusammenfassung}
+\chapter{Kapitel 1-3}
+
+\section{tl;dr Kapitel 1 bis 3}
+
+\begin{itemize}
+	\item \textit{Programmieren} := Lösen von Problemen mit Software
+	\item \textit{Programmiersprache} := Wörter und Regeln um \textit{Programmieranweisungen} zu definieren
+	\item \textit{Java} ist eine \textit{weit verbreitete, vielfältig einsetzbare, plattformunabhängige, objektorientierte} Programmiersprache
+	\item Java Programme werden mit \textit{Klassen} erstellt
+	\item Klassen enthalten \textit{Methoden} (Verhalten) und \textit{Variablen} (Eigenschaften)
+	\item Die Methode \mintinline{java}{main} ist der Startpunkt eines jeden Java Programmes
+	\item \textit{Kommentare} erläutern, \textit{weshalb} oder \textit{wozu} Sie etwas tun:
+	\begin{itemize}
+        \item \mintinline{java}{//} oder \mintinline{java}{/* */} oder \mintinline{java}{/** */}
+    \end{itemize}
+\end{itemize}
+
+\begin{javacodebox}
+    public class Quote {
+        /**
+        * Gibt ein Zitat von Steve Jobs aus
+        */
+        public static void main(String[] args) {
+            System.out.println("Steve Jobs:");
+            System.out.println("Es ist besser, ein Pirat zu sein, "
+                         + "als der Marine beizutreten.");
+    }
+}
+\end{javacodebox}
+
+\begin{itemize}
+    \item \textit{Bezeichner} gehören zu einer der drei Kategorien:
+    \begin{itemize}
+        \item Wörter, die für einen \textit{bestimmten Zweck reserviert} sind (\mintinline{java}{class}, \mintinline{java}{int}, \ldots )
+        \item Wörter, die etwas aus \textit{diesem} Programm bezeichnen (\textit{eigene} Methode oder \textit{eigene} Variable)
+        \item Wörter, die etwas aus dem \textit{Java API} bezeichnen (\mintinline{java}{System}, \mintinline{java}{main}, \mintinline{java}{println}, \ldots )
+    \end{itemize}
+    \item \textit{Konventionen} für Bezeichner:
+    \begin{itemize}
+        \item Klassen: \mintinline{java}{Student} oder \mintinline{java}{StudentActivity}
+        \item Methoden: \mintinline{java}{start} oder \mintinline{java}{findMin}
+        \item Variablen: \mintinline{java}{grade} oder \mintinline{java}{nextItem}
+        \item Konstanten: \mintinline{java}{MIN} oder \mintinline{java}{MAX_CAPACITY}
+    \end{itemize}
+	\item \textit{Java Quellcode} wird mit \mintinline{java}{javac} in \textit{Bytecode übersetzt} (kompiliert)
+	\item \textit{Java Bytecode} wird mit \mintinline{java}{java} ausgeführt (\textit{interpretiert})
+	\item \textit{Fehler}:
+	\begin{itemize}
+        \item Fehler beim Kompilieren (\textit{Kompilier-} oder \textit{Syntaxfehler})
+        \item Fehler beim Interpretieren (\textit{Laufzeitfehler})
+        \item Fehler in der Semantik (\textit{Logische Fehler})
+    \end{itemize}
+	\item Zeichen innerhalb doppelter Anführungszeichen sind \textit{Zeichenketten}: \mintinline{java}{"Hallo Java"}
+	\item Zeichenketten sind Objekte der Klasse \mintinline{java}{String}
+	\item Zeichenketten können mittels \textit{Konkatenation} miteinander «verklebt» werden: \mintinline{java}{"Hallo" + " " + "Java"}
+	\item Gewisse Sonderzeichen erfordern \textit{Escape-Sequenzen}: \mintinline{java}{"\n"} oder \mintinline{java}{"\t"}
+\end{itemize}
+
+\begin{javacodebox}
+System.out.println("Es gibt unendlich viele Primzahlen. Ein System, "
+        + "welche Zahlen Primzahlen sind, ist nicht bekannt.");
+
+System.out.println("\"Die Anzahl der Dummheiten übersteigt die der "
+        + "Primzahlen.\nGibt es nicht unendlich viele "
+        + "Primzahlen?\"\n\tGregor Brand");
+
+System.out.println("Daher zählt die " + 1 + " nicht zu den Primzahlen.");
+\end{javacodebox}
+
+\begin{itemize}
+	\item \textit{Variable} := Speicherort für einen Wert oder ein Objekt
+	\item Variablen müssen mit \textit{Datentyp} und \textit{Bezeichner} deklariert werden
+	\item Mit dem \textit{Zuweisungsoperator} werden deklarierten Variablen Werte zugewiesen: \mintinline{java}{int i = 17;}
+	\item Definierte Variablen können gelesen (\textit{referenziert}) werden
+\end{itemize}
+
+\begin{javacodebox}
+int pages;
+pages = 256;
+int figures = 46, tables;
+tables = 17;
+
+System.out.println("Anzahl Seiten des Buches: " + pages);
+System.out.println("Anzahl Abbildungen: " + figures
++ "; Anzahl Tabellen: " + tables);
+\end{javacodebox}
+
+\begin{itemize}
+	\item Konstanten werden mit \mintinline{java}{final} modifiziert: \mintinline{java}{final int MIN = 0;}
+\end{itemize}
+
+\begin{itemize}
+	\item Java kennt acht \textit{primitive} Datentypen: (\mintinline{java}{byte}, \mintinline{java}{short}, \mintinline{java}{int}, \mintinline{java}{long}, \mintinline{java}{float}, \mintinline{java}{double}, \mintinline{java}{char}, \mintinline{java}{boolean})
+	\item Wechsel von «kleinen» zu «grossen»:
+\end{itemize}
+
+\begin{javacodebox}
+int count = 17;
+double num = count; // num = 17.0
+\end{javacodebox}
+
+\begin{itemize}
+	\item Wechsel von «grossen» zu «kleinen» via \textit{Cast}:
+\end{itemize}
+
+\begin{javacodebox}
+double num = 12.34;
+int count = (int) num; // num = 12.34; count = 12
+\end{javacodebox}
+
+\begin{itemize}
+	\item \textit{Ausdruck} := Kombination von einem oder mehreren \textit{Operanden} und \textit{Operatoren}
+	\item Operanden sind Werte, Variablen oder Konstanten
+	\item \textit{Arithmetische Ausdrücke}:
+\end{itemize}
+
+\begin{javacodebox}
+double grade = (double) points / MAX_POINTS * 5 + 1;
+\end{javacodebox}
+
+\begin{itemize}
+	\item Lesen verändert Variablen niemals: \mintinline{java}{MAX\_POINTS * 5}
+	\item \textit{Zuweisungsoperatoren} und das \textit{Inkrement/Dekrement} machen das Leben einfacher:
+\end{itemize}
+
+\begin{javacodebox}
+points = points * 2;
+points *= 2;
+
+points = points + 1;
+points++;
+\end{javacodebox}
+
+\begin{itemize}
+	\item \textit{Boolesche Ausdrücke} sind entweder \mintinline{java}{true} oder \mintinline{java}{false}
+	\item Boolesche Ausdrücke oder Boolesche Variablen können kombiniert und negiert werden
+\end{itemize}
+
+\begin{javacodebox}
+boolean smaller = hours < MAX;
+boolean decision = (hours < MAX || hours > MIN) && !complete;
+\end{javacodebox}
+
+\begin{itemize}
+	\item Die \mintinline{java}{if}-\textit{Anweisung} ist eine «Verzweigung», die auf einem Booleschen Ausdruck basiert:
+\end{itemize}
+
+\begin{javacodebox}
+if (hours < MAX) {
+    hours += 10;
+    System.out.println("10 Stunden hinzugefügt.");
+    } else
+    System.out.println("ACHTUNG: Maximum erreicht!");
+\end{javacodebox}
+
+\begin{itemize}
+    \item Das \textit{Java API} besteht aus verschiedenen \textit{Packages}, welche Klassen beinhalten, die Lösungen für \textit{häufige Aufgaben} bereitstellen
+    \item Sie kennen verschiedene Klassen: \mintinline{java}{String}, \mintinline{java}{Scanner}, \mintinline{java}{Random}, \mintinline{java}{DecimalFormat}.
+    \item Der \mintinline{java}{new}-Operator \textit{instanziiert} mit dem Aufruf des \textit{Konstruktors} ein Objekt aus einer \textit{Klasse} (Datentyp einer Objektvariablen := Klasse)
+\end{itemize}
+
+\begin{javacodebox}
+String str = new String("Hallo Welt");
+Scanner scan = new Scanner(System.in);
+Random rand = new Random();
+\end{javacodebox}
+
+\begin{itemize}
+    \item Methoden können mit dem \textit{Punkt-Operator} auf instanziierten Objekten aufgerufen werden
+\end{itemize}
+
+\begin{javacodebox}
+int length = str.length();
+int number = scan.nextInt();
+double randomNumber = rand.nextFloat();
+\end{javacodebox}
+
+\begin{itemize}
+    \item \textit{Primitive Datentypen}: Kopien von Variablen sind /textit{unabhängig}
+\end{itemize}
+
+\begin{javacodebox}
+int num1 = 17;
+int num2 = num1;
+num2 = 99;
+System.out.println(num1); // 17
+System.out.println(num2); // 99
+\end{javacodebox}
+
+\begin{itemize}
+    \item \textit{Objektvariablen}: Kopien von Variablen sind \textit{abhängig} (\textit{Aliase})
+\end{itemize}
+
+\begin{javacodebox}
+Integer num1 = new Integer(17);
+Integer num2 = num1;
+num2.setValue(99);
+System.out.println(num1); // 99
+System.out.println(num2); // 99
+\end{javacodebox}
+
+\chapter{Kapitel 4}
+\section{tl;dr Kapitel 4}
+
+\begin{itemize}
+    \item Klassen enthalten \textit{Variablen} und \textit{Methoden} (Eigenschaften und Verhalten)
+    \item \textit{Sichtbarkeitsmodifikatoren} (\mintinline{java}{public}/\mintinline{java}{private}) bestimmen, was extern oder nur intern referenziert werden kann
+    \item Variablen sollten \mintinline{java}{private} deklariert werden. Methoden können \mintinline{java}{private} oder \mintinline{java}{public} deklariert werden (je nach Zweck)
+\end{itemize}
+
+\begin{javacodebox}
+public class Integer {
+
+    private int value;
+
+    public Integer(int value) {
+    this.value = value;
+    }
+
+    public String toString() {
+    return this.value + "";
+    }
+
+    public void setValue(int value) {
+    this.value = value;
+    }
+}
+\end{javacodebox}
+
+\begin{itemize}
+    \item Methoden bestehen aus \textit{Methodenkopf} und \textit{Methodenrumpf}
+    \item Methodenkopf: (1) \textit{Sichtbarkeit} (2) \textit{Datentyp} der Rückgabe oder \mintinline{java}{void} (3) \textit{Bezeichner} (4) \textit{Formale Parameter} in Klammern
+    \item Konstruktoren besitzen \textit{keinen} Rückgabetyp und heissen immer gleich wie die zugehörige Klasse
+\end{itemize}
+
+\begin{javacodebox}
+public Integer(int value) {
+    this.value = value;
+}
+
+public String toString() {
+    return this.value + "";
+}
+
+public void setValue(int value) {
+    this.value = value;
+}
+\end{javacodebox}
+
+\begin{itemize}
+    \item Konstruktoren instanziieren Objekte aus der Klasse und geben eine \textit{Referenz} auf das Objekt zurück
+\end{itemize}
+
+\begin{javacodebox}
+Integer num1 = new Integer(17);
+\end{javacodebox}
+
+\begin{itemize}
+    \item \textit{Tatsächlicher Parameter}: Wird beim Aufruf an die Methode mitgegeben
+\end{itemize}
+
+\begin{javacodebox}
+num1.setValue(99);
+\end{javacodebox}
+
+\begin{itemize}
+    \item \textit{Formaler Parameter}: Bezeichner, in den der tatsächliche Parameter kopiert wird
+\end{itemize}
+
+\begin{javacodebox}
+public void setValue(int value) {
+    this.value = value;
+}
+\end{javacodebox}
+
+\begin{itemize}
+    \item Methoden können mit einer \mintinline{java}{return}-Anweisung «etwas» zurückgeben
+    \item Der Rückgabetyp und der Datentyp der Rückgabe müssen übereinstimmen
+\end{itemize}
+
+\begin{javacodebox}
+public String toString() {
+    return this.value + "";
+}
+\end{javacodebox}
+
+\begin{javacodebox}
+String value = num1.toString();
+\end{javacodebox}
+
+\chapter{Kapitel 5-6}
+\section{tl;dr Kapitel 5-6}
+
+\begin{itemize}
+    \item Die Klasse \mintinline{java}{Math} bietet mathematische Funktionen als \textit{statische Methoden} an
+    \item Statische Methoden können «direkt» ohne instanziiertes Objekt aufgerufen werden: \mintinline{java}{Math.sqrt(3);}
+    \item Statische Methoden können auch verschachtelt werden:
+    \begin{itemize}
+        \item \mintinline{java}{Math.sqrt(1 - Math.pow(Math.sin(alpha), 2));}
+    \end{itemize}
+    \item Für jeden primitiven Datentyp existiert im Java API eine entsprechende \textit{Wrapper Klasse}
+    \item Hauptaufgabe dieser Klassen ist es, einen primitiven Datenwert zu umhüllen
+    \begin{itemize}
+        \item \mintinline{java}{Double d = 4.567;}
+    \end{itemize}
+    \item Die Wrapper bieten zudem hilfreiche statische Methoden und Konstanten an:
+    \begin{itemize}
+        \item \mintinline{java}{Integer.MAX_VALUE}
+        \item \mintinline{java}{Double.parseDouble("4.567");}
+        \item \mintinline{java}{Double.POSITIVE_INFINITY}
+        \item \mintinline{java}{Boolean.toString(true)}
+    \end{itemize}
+    \item \mintinline{java}{while}-Anweisungen erlauben es, gewisse Anweisungen mehrfach auszuführen, ohne diese mehrfach programmieren zu müssen
+\end{itemize}
+
+\begin{javacodebox}
+    Random rand = new Random();
+    System.out.println("1 : " + rand.nextInt(100));
+    System.out.println("2 : " + rand.nextInt(100));
+    System.out.println("3 : " + rand.nextInt(100));
+    System.out.println("4 : " + rand.nextInt(100));
+    System.out.println("5 : " + rand.nextInt(100));
+    System.out.println("6 : " + rand.nextInt(100));
+    System.out.println("7 : " + rand.nextInt(100));
+    System.out.println("8 : " + rand.nextInt(100));
+    System.out.println("9 : " + rand.nextInt(100));
+    System.out.println("10 : " + rand.nextInt(100));
+\end{javacodebox}
+
+\begin{javacodebox}
+    Random rand = new Random();
+    int i = 1;
+    while (i <= 10) {
+        System.out.println(i + " : " + rand.nextInt(100));
+        i++;
+    }
+\end{javacodebox}
+
+\begin{itemize}
+    \item Mit \textit{Wächterwerten} können wir ein Programm kontrollieren:
+\end{itemize}
+
+\begin{javacodebox}
+Scanner scan = new Scanner(System.in);
+int input = 1;
+while (input != 0) {
+    System.out.print("Mit 0 Beenden Sie den Prozess. ");
+    input = scan.nextInt();
+}
+System.out.println("--ENDE--");
+\end{javacodebox}
+
+\begin{itemize}
+    \item \mintinline{java}{while}-Schleifen können auch zur Kontrolle von Eingaben verwendet werden:
+\end{itemize}
+
+\begin{javacodebox}
+Scanner scan = new Scanner(System.in);
+System.out.print("Alter eingeben: ");
+int age = scan.nextInt();
+while (age < 0) {
+    System.out.println("Ungültiger Wert.");
+    System.out.print("Alter eingeben: ");
+    age = scan.nextInt();
+}
+\end{javacodebox}
+
+\begin{itemize}
+    \item \mintinline{java}{while}-Schleifen können auch verschachtelt werden:
+\end{itemize}
+
+\begin{javacodebox}
+int counter = 2;
+while (counter <= 20) {
+    System.out.print("Teiler von " + counter + ":\t");
+    int divisor = 1;
+    while (divisor <= counter / 2) {
+        if (counter % divisor == 0)
+            System.out.print(divisor + " ");
+        divisor++;
+    }
+    System.out.println();
+    counter++;
+}
+\end{javacodebox}
+
+\begin{itemize}
+    \item Wir können Klassen \textit{generisch} machen:
+\end{itemize}
+
+\begin{javacodebox}
+public class Rocket<T> {
+
+    private T cargo;
+
+    public Rocket(T cargo) {
+    this.cargo = cargo;
+    }
+
+    public void set(T cargo) {
+    this.cargo = cargo;
+    }
+
+    public T get() {
+    return this.cargo;
+    }
+}
+\end{javacodebox}
+
+\begin{itemize}
+    \item Um eine generische Klasse zu instanziieren, müssen wir sie zusammen mit einem \textit{Typargument} instanziieren:
+    \begin{itemize}
+        \item \mintinline{java}{Rocket<Integer> intRocket = new Rocket<Integer>();}
+    \end{itemize}
+    \item Die \textit{Typvariable} \mintinline{java}{T} wird nun überall mit dem Typargument \mintinline{java}{Integer} ersetzt
+    \item Die Klasse \mintinline{java}{ArrayList} erlaubt es, Sammlungen von Objekten des Typs \mintinline{java}{T} anzulegen.
+    \item Objekte dieser Klasse werden bei der Instanziierung \textit{parametrisiert}:
+\end{itemize}
+
+\begin{javacodebox}
+ArrayList<String> names= new ArrayList<String>();
+ArrayList<PlayerCard> cards = new ArrayList<PlayerCard>();
+ArrayList<Integer> numbers = new ArrayList<Integer>();
+\end{javacodebox}
+
+\begin{itemize}
+    \item Listen passen Ihre Grösse dynamisch an:
+\end{itemize}
+
+\begin{javacodebox}
+names.add("Keanu");
+names.add("Kevin");
+System.out.println(names); // [Keanu, Kevin]
+names.add("Karl");
+System.out.println(names); // [Keanu, Kevin, Karl]
+names.remove(1);
+System.out.println(names); // [Keanu, Karl]
+\end{javacodebox}
+
+\begin{itemize}
+    \item Die \mintinline{java}{switch}-Anweisung bietet eine Alternative für (stark) verschachtelte \mintinline{java}{if}-Anweisungen:
+\end{itemize}
+
+\begin{javacodebox}
+if (i == 1)
+    System.out.println("Eins");
+else
+    if (i == 2)
+        System.out.println("Zwei");
+    else
+        if (i == 3)
+            System.out.println("Drei");
+        else
+            if (i == 4)
+                System.out.println("Vier");
+            else
+                if (i == 5)
+                    System.out.println("Fünf");
+                 else
+                         System.out.println("Irgendwas anderes");
+\end{javacodebox}
+
+\begin{javacodebox}
+switch (i) {
+    case 1: System.out.println("Eins"); break;
+    case 2: System.out.println("Zwei"); break;
+    case 3: System.out.println("Drei"); break;
+    case 4: System.out.println("Vier"); break;
+    case 5: System.out.println("Fünf"); break;
+    default: System.out.println("Irgendwas anderes");
+}
+\end{javacodebox}
+
+\begin{itemize}
+    \item Der \textit{Conditional}bietet eine elegante Möglichkeit bei alternativen Zuweisungen:
+\end{itemize}
+
+\begin{javacodebox}
+if (points > MAX)
+    points = points + 1;
+else
+    points = points * 2;
+\end{javacodebox}
+
+\begin{javacodebox}
+points = (points > MAX) ? points + 1 : points * 2;
+\end{javacodebox}
+
+\begin{itemize}
+    \item Die \mintinline{java}{do}-Anweisung ist ähnlich zur \mintinline{java}{while}-Anweisung, evaluiert aber die Boolesche Bedingung am Ende der Schleife:
+\end{itemize}
+
+\begin{javacodebox}
+System.out.print("Erreichte Punkte (0 bis 100): ");
+int points = scan.nextInt();
+while (points < 0 || points > 100) {
+    System.out.print("Erreichte Punkte (0 bis 100): ");
+    points = scan.nextInt();
+}
+\end{javacodebox}
+
+\begin{javacodebox}
+int points;
+do {
+    System.out.print("Erreichte Punkte (0 bis 100): ");
+    points = scan.nextInt();
+} while (points < 0 || points > 100);
+\end{javacodebox}
+
+\begin{itemize}
+    \item Die \mintinline{java}{for}-Schleife ist gut geeignet, wenn man von Anfang an weiss, wie oft diese durchgeführt werden muss.
+    \item Der Schleifenkopf der \mintinline{java}{for}-Schleife besteht aus drei Teilen:
+    \begin{itemize}
+        \item \textit{Initialisierung}: Wird am \textit{Anfang} und \textit{genau einmal} durchgeführt
+        \item \textit{Boolesche Bedingung}: Wird immer \textit{vor} dem nächsten Eintritt in die Schleife überprüft
+        \item \textit{Inkrement}: Wird \textit{immer am Ende} der Schleife durchgeführt
+    \end{itemize}
+\end{itemize}
+
+\begin{javacodebox}
+for (int i = 0; i < 10; i++)
+    System.out.print(Math.pow(i, 2) + " ");
+\end{javacodebox}
+
+\begin{itemize}
+    \item Variante: \mintinline{java}{for}-\mintinline{java}{each}-Schleife - in jedem Durchgang zeigt die Variable auf das nächste Element einer \mintinline{java}{ArrayList}
+\end{itemize}
+
+\begin{javacodebox}
+for (String s : list)
+    System.out.println(s);
+\end{javacodebox}
+
+\begin{itemize}
+    \item Vorsicht bei \mintinline{java}{==} auf Dezimalzahlen
+\end{itemize}
+
+\begin{javacodebox}
+final double TOLERANCE = 0.00000001;
+if (Math.abs(num1 - num2) < TOLERANCE) {
+\end{javacodebox}
+
+\begin{itemize}
+    \item Vergleich von Zeichen basiert auf Unicode (Ziffern < Grossbuchstaben < Kleinbuchstaben)
+\end{itemize}
+
+\begin{javacodebox}
+char c0 = '0', c1 = 'A', c2 = 'a';
+System.out.println(c0 < c1); // true
+System.out.println(c1 < c2); // true
+\end{javacodebox}
+
+\begin{itemize}
+    \item Vorsicht bei \mintinline{java}{==} auf Objekten: Testet auf \textit{Aliase}
+    \item Verwenden/Schreiben der Methode \mintinline{java}{equals} und der Methode \mintinline{java}{compareTo}
+\end{itemize}
+
+\begin{javacodebox}
+public class Integer {
+
+    private int value;
+
+    public Integer(int value) {
+    this.value = value;
+    }
+
+    public boolean equals(Integer other) {
+    return this.value == other.value;
+    }
+
+    public int compareTo(Integer other) {
+    return this.value - other.value;
+    }
+}
+\end{javacodebox}
+
+\begin{javacodebox}
+Integer i1 = new Integer(2);
+Integer i2 = new Integer(17);
+Integer i3 = new Integer(2);
+
+System.out.println(i1.equals(i2)); // false
+System.out.println(i1.equals(i3)); // true
+
+System.out.println(i1.compareTo(i2)); // -15
+System.out.println(i1.compareTo(i3)); // 0
+System.out.println(i2.compareTo(i3)); // 15
+\end{javacodebox}
+
+
+
+
+
+\part{Serien}
+\chapter{Serie 1}
+\section{Theorieaufgaben}
+
+\subsection{Bezeichner}
+
+\paragraph{Aufgabe:}
+Finden Sie passende Bezeichner für ...
+\begin{itemize}
+    \item eine Java Klasse, die eine Prüfung repräsentieren soll.
+    \item die erreichten Punkte in einer Prüfung.
+    \item eine Methode, welche den Durchschnittswert aller Prüfungen berechnet.
+    \item die maximale Punktzahl, die in einer Prüfung erreicht werden kann.
+\end{itemize}
+
+\paragraph{Lösung:}
+\begin{itemize}
+    \item \mintinline{java}{public class Exam {}}
+    \item \mintinline{java}{int points}
+    \item \mintinline{java}{meanPoints()}
+    \item \mintinline{java}{final int MAX_POINTS}
+\end{itemize}
+
+\subsection{Variablen und Eigenschaften}
+
+\paragraph{Aufgabe:}
+Finden Sie für die Klasse \mintinline{java}|Flight| mindestens drei Variablen (Eigenschaften) und drei Methoden (Verhalten/Funktionen), die in den Klassen modelliert werden könnten.
+
+\subsubsection{Mögliche Lösung:}
+\textbf{Variablen}
+\begin{enumerate}
+    \item \mintinline{java}{altitude}
+    \item \mintinline{java}{cargoWeight}
+    \item \mintinline{java}{fuelRemaining}
+\end{enumerate}
+\textbf{Methoden}
+\begin{enumerate}
+    \item \mintinline{java}{bookSeat()}
+    \item \mintinline{java}{cancelFlight()}
+    \item \mintinline{java}{readFuelLevel()}
+\end{enumerate}
+
+\subsection{Zitat}
+
+\paragraph{Aufgabe:}
+Schreiben Sie eine einzige \mintinline{java}{println} Anweisung, die die folgende Zeichenkette als Ausgabe generiert:
+\begin{textcodebox}
+"Mein Name ist Winston Wolfe.
+Ich löse Probleme!", stellte er sich vor.
+\end{textcodebox}
+
+\textbf{Lösung:}
+
+\begin{javacodebox}
+System.out.println("\"Mein Name ist Winston Wolfe. \n" +
+    "Ich löse Probleme!\", stellte er sich vor.");
+\end{javacodebox}
+
+\subsection{Rechnung}
+
+\paragraph{Aufgabe:}
+Welchen Wert enthält die Variable \mintinline{java}{result}, nachdem folgende Anweisungen durchgeführt worden sind?
+\begin{javacodebox}
+int result = 25;
+result = result + 5;
+result = result / 7;
+result = result * 3;    
+\end{javacodebox}
+
+
+
+\textbf{Lösung:}
+\begin{javacodebox}
+int result = 25;
+result = result + 5; // 30
+result = result / 7; // 4
+result = result * 3; // 12
+\end{javacodebox}
+
+\subsection{Rechnung}
+
+\paragraph{Aufgabe:}
+Welchen Wert enthält die Variable \mintinline{java}{result}, nachdem folgende Anweisungen durchgeführt worden sind?
+\begin{javacodebox}
+int result = 15, total = 100, min = 15, num = 10;
+result /= (total - min) % num;
+\end{javacodebox}
+
+\textbf{Lösung:}
+\begin{javacodebox}
+int result = 15, total = 100, min = 15, num = 10;
+result /= (total – min) % num;
+result = result / ((total – min) % num;
+3 = 15 / (( 100 - 15) % 10;
+\end{javacodebox}
+
+\subsection{Operationen}
+
+\paragraph{Aufgabe:}
+Gegeben seien folgende Deklarationen:
+\begin{javacodebox}
+int result1, num1 = 27, num2 = 5;
+double result2, num3 = 12.0;
+\end{javacodebox}
+
+Welches Resultat wird jeweils durch folgende Anweisungen gespeichert?
+\begin{javacodebox}
+result1 = num1 / num2;
+result2 = num1 / num2;
+result2 = num3 / num2;
+result1 = (int) num3 / num2;
+result2 = (double) num1 / num2;
+\end{javacodebox}
+
+\textbf{Lösung:}
+\begin{javacodebox}
+int result1, num1 = 27, num2 =5;
+double result2, num3 = 12.0;
+result1 = num1 / num2; // 5.0
+result2 = num1 / num2; // 5.4
+result2 = num3 / num2; // 2.4
+result1 = (int) num3 / num2; // 2
+result2 = (double) num1 / num2; // 5.4
+\end{javacodebox}
+
+\subsection{Boolsche Operationen}
+
+\paragraph{Aufgabe:}
+Gegeben seien folgende Deklarationen:
+\begin{javacodebox}
+int val1 = 15, val2 = 20;
+boolean ok = false;
+\end{javacodebox}
+
+Was ist der Wert der folgenden Booleschen Ausdrücke?
+\begin{javacodebox}
+val1 <= val2
+(val1 + 5) >= val2
+val1 < val2 / 2
+val1 != val2
+!(val1 == val2)
+(val1 < val2) || ok
+(val1 > val2) || ok
+(val1 < val2) && !ok
+ok || !ok   
+\end{javacodebox}
+
+\textbf{Lösung:}
+
+\begin{javacodebox}
+int val1 = 15, val2 = 20;
+Boolean ok = false;
+true
+true
+false
+true
+true
+true
+false
+true
+true
+\end{javacodebox}
+
+\section{Implementationsaufgaben}
+
+\subsection{Einfache Ausgabe - \mintinline{java}{WinterIsComing.java}}
+
+\paragraph{Aufgabe:}
+Schreiben Sie ein Programm, welches den Satz "Winter is coming" ausgibt (erste Version: auf einer Zeile; zweite Version: jedes Wort auf einer separaten Zeile).
+
+\textbf{Lösung:}
+\begin{javacodebox}
+public class WinterIsComing {
+
+    public static void main(String[] args) {
+
+        System.out.println("\"Winter is coming\"");
+        System.out.println("\"Winter \n" +
+            "is \n" +
+            "coming\"");
+    }
+}
+\end{javacodebox}
+
+
+\subsection{Einfache Berechnungen - \mintinline{java}{Quotient.java}}
+
+\paragraph{Aufgabe:}
+Schreiben Sie ein Programm, das vom Benutzer die Eingabe von zwei ganzzahligen Werten \mintinline{java}{a} und \mintinline{java}{b} fordert. Ihr Programm soll den Quotienten $\frac{a^2}{b}$ sowohl als Gleitkommazahl (d.h. ungerundet) als auch als ganze Zahl mit Rest berechnen und beide Ergebnisse am Bildschirm ausgeben. Testen Sie Ihr Programm mit beliebigen Zahlen.
+
+Beobachten Sie insbesondere das Programmverhalten bei Eingabe der Zahl \mintinline{java}{0} als Divisor und versuchen Sie diesen Laufzeitfehler abzufangen.
+
+\textbf{Mögliche Lösung:}
+
+\begin{javacodebox}
+import java.util.Scanner;
+
+public class Quotient {
+    public static void main(String[] args) {
+
+        System.out.println("Dieses Programm berechnet den Quotienten
+                            zweier Zahlen \"a\" und \"b\".");
+        
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Geben Sie den Teil \"a\" ein:");
+        double var1 = scan.nextDouble();
+        
+        System.out.println("Geben Sie den Teil \"b\" ein:");
+        double var2 = scan.nextDouble();
+        
+        if (var2 != 0) { //Wert 0 führt zu divide by zero
+            double quotientDouble = (var1 * var1) / var2;
+            // int quotientInt = (int) var1 * (int) var1) / (int) var2;
+            int quotientInt = (int) quotientDouble;
+            System.out.println("_________________________________________\n" + 
+                "Der Quotient Ihrer Zahlen: \t" + quotientDouble + 
+                "\nUnd als \"int\":\t \t \t" + quotientInt);
+        } else { 
+            System.out.println("Geben Sie nicht 0 ein!");
+        }
+        scan.close();
+    }
+}
+\end{javacodebox}
+
+\subsection{Benutzerinteraktion - \mintinline{java}{HumanThermometer.java}}
+
+\paragraph{Aufgabe:}
+Schreiben Sie ein Programm, das vom Benutzer die Eingabe einer Temperatur \mintinline{java}{t} fordert. Die Ausgabe Ihres Programmes definiert sich danach folgendermassen:
+\[
+\text{Ausgabe} = 
+\begin{cases} 
+\text{Kalt} & \text{wenn } t < 15, \\
+\text{Angenehm} & \text{wenn } 15 \leq t < 24, \\
+\text{Warm} & \text{wenn } t \geq 24 
+\end{cases}
+\]
+
+Hinweis: Verwenden Sie Konstanten für beide Temperaturgrenzen.
+
+\textbf{Mögliche Lösung:}
+
+\begin{javacodebox}
+import java.util.Scanner;
+
+public class HumanThermometer {
+    public static void main(String[] args) {
+		final int LOWER_BOUND = 15;
+		final int UPPER_BOUND = 24;
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Die aktuelle Temperatur: ");
+		int temperature = scan.nextInt();
+		
+		if (temperature < LOWER_BOUND) {
+			System.out.println("Es ist kalt");
+		} 
+		else if ((LOWER_BOUND <= temperature) && (temperature <= UPPER_BOUND)) {
+			System.out.println("Es ist angenehm");
+		} 
+		else
+			System.out.println("Es ist warm");
+		
+		scan.close();
+	}
+}
+\end{javacodebox}
+
+\chapter{Serie 2}
+\section{Theorieaufgaben}
+\subsection{Der \mintinline{java}{new}-Operator}
+
+\paragraph{Aufgabe:} 
+Der \mintinline{java}{new}-Operator zusammen mit dem Konstruktor einer Klasse erledigt zwei Dinge. Was genau?
+
+\textbf{Lösung:}
+
+\begin{itemize}
+    \item Der \mintinline{java}{new}-Operator...
+    \begin{itemize}
+        \item  erzeugt/instanziiert ein neues Objekt aus der Klasse
+        \item erstellt eine Adresse für das Objekt und gibt diese zurück
+    \end{itemize}
+    \item \mintinline{java}|Scanner scan = new Scanner(System.in);|
+    \begin{itemize}
+        \item Objekt vom Typ Scanner ist instanziiert und die Adresse des Objektes ist der Variablen scan zugewiesen.
+    \end{itemize}
+\end{itemize}
+
+\subsection{\mintinline{java}{ArrayList} in der Java API}
+
+\paragraph{Aufgabe:}
+Informieren Sie sich in der Java API Dokumentation über die Klasse \mintinline{java}{ArrayList} (welche eine Liste für Objekte repräsentiert).
+
+\begin{itemize}
+    \item Wie instanziieren Sie eine solche Liste?
+    \item Wie fügen Sie ein Objekt zur Liste hinzu?
+    \item Wie greifen Sie auf ein Objekt an Position \mintinline{java}{i} zu?
+    \item Wie löschen Sie den gesamten Inhalt der Liste?
+    \item Wie können Sie überprüfen, ob ein bestimmtes Objekt in der Liste vorhanden ist?
+\end{itemize}
+
+\textbf{Lösung:}
+
+\begin{itemize}
+    \item Wie instanziieren Sie eine solche Liste?
+    \begin{itemize}
+        \item \mintinline{java}{ArrayList list = new ArrayList();}
+        \item Oder mit einer Zuordnung des Typs (hier mit dem Beispiel \mintinline{java}{String})
+        \begin{itemize}
+            \item \mintinline{java}{ArrayList<String> list = new ArrayList<>();}
+        \end{itemize}
+    \end{itemize}
+    \item Wie fügen Sie ein Objekt zur Liste hinzu?
+    \begin{itemize}
+        \item mit der Methode \mintinline{java}{.add()} wird ein Objekt am Ende der Liste eingefügt
+        \begin{itemize}
+            \item Möglicher Parameter ist der Index vom Typ \mintinline{java}{int}, welcher angibt an welcher Position das Objekt in die Liste eingefügt werden soll
+        \end{itemize}
+    \end{itemize}
+    \item Wie greifen Sie auf ein Objekt an Position \mintinline{java}{i} zu?
+    \begin{itemize}
+        \item mit der Methode \mintinline{java}{.get(i)}
+    \end{itemize}
+    \item Wie löschen Sie den gesamten Inhalt der Liste?
+    \begin{itemize}
+        \item mit der Methode \mintinline{java}{.clear()}
+    \end{itemize}
+    \item Wie können Sie überprüfen, ob ein bestimmtes Objekt in der Liste vorhanden ist?
+    \begin{itemize}
+        \item mit der Methode \mintinline{java}{.contains()} wird ein \mintinline{java}{boolean} Wert zurückgegeben, ob das Objekt welches als Parameter "mitgegeben wurde" in der Liste ist
+    \end{itemize}
+\end{itemize}
+
+\subsection{Unterschied zwischen Klassen und Objekten}
+
+\paragraph{Aufgabe:}
+Erläutern Sie anhand der Klasse \mintinline{java}{String} und des Objektes \mintinline{java}{"String"} den Unterschied zwischen Klasse und Objekt.
+
+\textbf{Lösung:}
+
+\begin{itemize}
+    \item Die Klasse \mintinline{java}|String| gibt den «Bauplan» für alle verschiedenen Objekte der Klasse vor. Sie definiert das Verhalten und die Eigenschaften eines \mintinline{java}|String| (Methoden und Variablen).
+    \item Das Objekt \mintinline{java}|"String"| ist eine konkrete «Realisierung» der Klasse \mintinline{java}|String|. Dieses Objekt besitzt die in der Klasse definierten Methoden und Variablen:
+    \begin{itemize}
+        \item es hat z.B. Länge 6 (Variable)
+        \item wir können z.B. die Methode \mintinline{java}|substring| darauf aufrufen.
+        \begin{itemize}
+            \item \mintinline{java}|"String".substring(3); // "ing"|
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Ausgabe}
+
+\paragraph{Aufgabe:}
+Welche Ausgabe erzeugen folgende Anweisungen?
+\begin{javacodebox}
+String testString = "Think different";
+System.out.println(testString.length());
+System.out.println(testString.substring(0, 4));
+System.out.println(testString.toUpperCase());
+System.out.println(testString.charAt(7));
+System.out.println(testString);
+\end{javacodebox}
+
+\textbf{Lösung:}
+
+\begin{textcodebox}
+15
+Thin
+THINK DIFFERENT
+i
+Think different
+\end{textcodebox}
+
+\subsection{Random}
+
+\paragraph{Aufgabe:}
+Gegeben sei eine Objektvariable vom Typ \mintinline{java}|Random| mit Bezeichner \mintinline{java}|rand|. In welchen Intervallen suchen die folgenden Anweisungen eine Zufallszahl?
+
+\begin{itemize}
+    \item \mintinline{java}|rand.nextInt(100) + 1;|
+    \item \mintinline{java}|rand.nextInt(51) + 100;|
+    \item \mintinline{java}|rand.nextInt(10) - 5;|
+    \item \mintinline{java}|rand.nextInt(3) - 3;|
+\end{itemize}
+
+\textbf{Lösung:}
+
+\begin{itemize}
+    \item \mintinline{java}|rand.nextInt(100) + 1;|
+    \begin{itemize}
+        \item \mintinline{java}|[1, 100]|
+    \end{itemize}
+    \item \mintinline{java}|rand.nextInt(51) + 100;|
+    \begin{itemize}
+        \item \mintinline{java}|[100, 150]|
+    \end{itemize}
+    \item \mintinline{java}|rand.nextInt(10) - 5;|
+    \begin{itemize}
+        \item \mintinline{java}|[-5, 4]|
+    \end{itemize}
+    \item \mintinline{java}|rand.nextInt(3) - 3;|
+    \begin{itemize}
+        \item \mintinline{java}|[-3, -1]|
+    \end{itemize}
+\end{itemize}
+
+\subsection{Aliase}
+
+\paragraph{Aufgabe:}
+Was sind Aliase und weshalb können Aliase problematisch sein?
+
+\textbf{Lösung:}
+
+\begin{itemize}
+    \item Aliase sind Variablen, die auf dasselbe Objekt zeigen. Bei primitiven Datentypen passiert das nicht, da der Wert kopiert wird.
+\end{itemize}
+
+\begin{javacodebox}
+int num1 = 17;
+int num2 = num1;
+num2 = 99; System.out.println(num1); // 17
+System.out.println(num2); // 99
+\end{javacodebox}
+
+\begin{itemize}
+    \item Bei Objektvariablen sieht es anders aus:
+\end{itemize}
+
+\begin{javacodebox}
+Integer num1 = new Integer(17);
+Integer num2 = num1;
+num2.setValue(99);
+System.out.println(num1); // 99
+System.out.println(num2); // 99
+\end{javacodebox}
+
+\begin{itemize}
+    \item Hier greifen beide Variablen auf das selbe Objekt zu. Das ist nicht immer wünschenswert, weil:
+    \begin{itemize}
+        \item Es ist unklar, welche Variable für was zuständig ist.
+        \item Änderungen an einer Variable beeinflussen die andere.
+        \item Der Code wird unübersichtlicher.
+        \item Es kann sogenannter \textit{garbage} und damit einhergehender Datenverlust entstehen.
+        \begin{itemize}
+            \item Im obigen Beispiel aus der Vorlesung ist dem Objekt \mintinline{java}|num1| selber kein Wert mehr zugewiesen, sondern nur noch die Verweisung auf \mintinline{java}|num2|. Der Wert \mintinline{java}|17| wird damit zu \textit{garbage}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{Implementationsaufgaben}
+
+\subsection{Rechteck - \mintinline{java}{Rectangle.java}}
+
+\paragraph{Aufgabe:}
+Schreiben Sie ein Programm, das nach der Länge und Breite eines Rechtecks fragt und danach die Fläche und den Umfang des Rechtecks berechnet und ausgibt. Zusätzlich soll Ihr Programm feststellen, ob es sich beim definierten Rechteck um ein Quadrat handelt oder nicht und eine entsprechende Ausgabe erzeugen.
+
+\textbf{Mögliche Lösung:}
+
+\begin{javacodebox}
+import java.util.Scanner;
+
+public class Rectangle {
+    public static void main(String[] args) {
+        
+        System.out.println("Geben Sie die Länge des Rechtecks ein:");
+        Scanner scan = new Scanner(System.in);
+        double length = scan.nextDouble();
+        System.out.println("Geben Sie die Breite des Rechtecks ein:");
+        double width = scan.nextDouble();
+        scan.close();
+
+        double area = length * width;
+        double perimeter = 2 * (length + width);
+
+        System.out.println("Die Fläche des Rechtecks beträgt: " + area);
+        System.out.println("Der Umfang des Rechtecks beträgt: " + perimeter);
+        if (length == width) {
+            System.out.println("Das Rechteck ist ein Quadrat.");
+        } else {
+            System.out.println("Das Rechteck ist kein Quadrat.");
+        }
+    }
+}
+\end{javacodebox}
+
+\subsection{Zufällige Addition - \mintinline{java}{RandomAddition.java}}
+
+\paragraph{Aufgabe:}
+Schreiben Sie ein Programm, das eine zufällige Additionsaufgabe mit zwei positiven Zahlen anzeigt. Die Summe der beiden Zahlen darf maximal 20 betragen. Der Benutzer soll dann ein Ergebnis eingeben können und das Programm soll überprüfen, ob die Eingabe korrekt war oder nicht und eine entsprechende Rückmeldung ausgeben.
+
+\textbf{Mögliche Lösung:}
+
+\begin{javacodebox}
+import java.util.Random;
+import java.util.Scanner;
+
+public class RandomAddition {
+    public static void main(String[] args) {
+        
+        Random random = new Random();
+        final int MAX = 21;
+        int number1 = random.nextInt(MAX);
+        // Die Summe der beiden Zahlen darf maximal 20 betragen.
+        int number2 = random.nextInt(MAX - number1); 
+        int sum = number1 + number2;
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Die Aufgabe lautet: " + number1 + " + " + number2);
+        System.out.println("Geben Sie das Ergebnis ein:");
+        int guess = scan.nextInt();
+
+        scan.close();
+
+        if (guess == sum) {
+            System.out.println("Das Ergebnis ist korrekt!");
+        } else {
+            System.out.println("Das Ergebnis ist falsch!");
+        }
+    }
+}
+\end{javacodebox}
+
+\subsection{Username und Passwort - \mintinline{java}{UsernameAndPassword.java}}
+
+\paragraph{Aufgabe:}
+Schreiben Sie ein Programm, das einen Benutzer separat nach seinem Vor- und Nachnamen fragt und diese einliest. Danach soll ein Benutzername nach folgendem Muster erzeugt werden:
+\[
+F L_{1} L_{2} L_{3} L_{4} L_{5} D_{1} D_{2} D_{3}
+\]
+
+wobei
+
+\begin{itemize}
+    \item $F$ dem ersten Buchstaben des Vornamens entspricht.
+    \item $L_{i}$ dem $i$-ten Buchstaben des Nachnamens entspricht.
+    \item $D_{1}D_{2}D_{3}$ einer zufälligen Zahl zwischen 000 und 999 entspricht.
+\end{itemize}
+
+Falls der eingegebene Nachname kürzer als 5 Zeichen sein sollte, werden entsprechend weniger Zeichen verwendet.
+
+Zusätzlich erzeugen Sie ein zufälliges Passwort für den Benutzer. Das Passwort soll mit einer 7 oder 8 oder 9 starten, gefolgt von 5 zufälligen ganzen Zahlen von 0 bis 9, gefolgt von einem Bindestrich -, gefolgt von drei zufälligen Grossbuchstaben.
+
+Geben Sie Benutzernamen und Passwort aus.
+
+\textbf{Tipp:} Die Zahlen 65 bis 90 repräsentieren die Grossbuchstaben A bis Z in Unicode und Sie können bspw. die ganze Zahl 77 folgendermassen in einen Buchstaben umwandeln:
+
+\begin{javacodebox}
+char d1 = (char) 77;
+\end{javacodebox}
+
+\textbf{Mögliche Lösung:}
+
+\begin{javacodebox}
+import java.util.Scanner;
+import java.util.Random;
+
+public class UsernameAndPassword {
+    public static void main(String[] args) {
+        
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Geben Sie Ihren Vornamen ein:");
+        String firstName = scan.nextLine();
+        System.out.println("Geben Sie Ihren Nachnamen ein:");
+        String lastName = scan.nextLine();
+        scan.close();
+
+        int lastNameLength = lastName.length();
+        final int MAX_LETTERS_OF_LASTNAME = 5;
+
+        String firstLetter = firstName.substring(0, 1);
+        // Math.min(a, b) sorgt dafür, dass auch Nachnamen mit weniger
+        // als MAX_LETTERS_OF_LASTNAME Buchstaben funktionieren
+        String lastNameArray = lastName.substring(0, Math.min(MAX_LETTERS_OF_LASTNAME,
+						       lastNameLength));
+
+        Random random = new Random();
+        int randomNumber = random.nextInt(1000);
+        // String.format("%03d", randomNumber) fügt führende Nullen hinzu,
+        // falls randomNumber < 100
+        String username = firstLetter.toUpperCase() + lastNameArray.toUpperCase() +
+				          String.format("%03d", randomNumber);
+
+
+        System.out.println("Der Benutzername lautet: " + username);
+
+        final int UNICODE_LOWER_BOUND = 65;
+        final int UNICODE_UPPER_BOUND = 91;
+        // ermöglicht die zufällige Ausgabe des ganzen Zahlenteils des Passworts
+        int randomPasswordNumber = random.nextInt(700000, 1000000);
+        char randomPasswordLetter1 = (char) random.nextInt(UNICODE_LOWER_BOUND,
+													       UNICODE_UPPER_BOUND);
+        char randomPasswordLetter2 = (char) random.nextInt(UNICODE_LOWER_BOUND,
+												           UNICODE_UPPER_BOUND);
+        char randomPasswordLetter3 = (char) random.nextInt(UNICODE_LOWER_BOUND,
+												           UNICODE_UPPER_BOUND);
+
+        String password = randomPasswordNumber + "-" + randomPasswordLetter1 +
+						  randomPasswordLetter2 + randomPasswordLetter3;
+
+        System.out.println("Das Passwort lautet: " + password);
+    }
+}
+\end{javacodebox}
+
+\chapter{Serie 3}
+\section{Implementationsaufgaben}
+\subsection{Thermometer - \mintinline{java}{Thermometer}}
+
+\paragraph{Aufgabe:}
+Programmieren Sie eine Klasse \mintinline{java}{Thermometer}, welche einen einfachen Fieberthermometer modelliert. Die Klasse soll eine Temperatur in Celsius als einzige Instanzvariable speichern. Der Konstruktor soll diese Instanzvariable standardmässig auf 37.0 Grad setzen. Schreiben Sie eine Methode \mintinline{java}{increase}, welche die Temperatur um 0.1 Grad erhöht und einen Getter für die Temperatur. Zudem definieren Sie eine Methode \mintinline{java}{reset}, welche die Temperatur wieder auf 37.0 zurücksetzt.
+
+Schreiben Sie eine zweite Klasse \mintinline{java}{ThermometerTest}, in der Sie zwei Objekte vom Typ \mintinline{java}{Thermometer} instanziieren und deren Methoden ausführlich testen.
+
+\textbf{Mögliche Lösung:}
+
+\subsubsection{Klasse \mintinline{java}{Thermometer.java}}
+
+\begin{javacodebox}
+public class Thermometer {
+    
+    private double temperature;
+
+    public Thermometer() {
+        this.temperature = 37.0;
+    }
+
+    public void increase() {
+        this.temperature += 0.1;
+    }
+
+    public double getTemperature() {
+        return this.temperature;
+    }
+
+    public void reset() {
+        this.temperature = 37.0;
+    }
+}
+\end{javacodebox}
+
+\subsubsection{Klasse \mintinline{java}{ThermometerTest.java}}
+
+\begin{javacodebox}
+public class ThermometerTest {
+        
+        public static void main(String[] args) {
+            Thermometer thermometer1 = new Thermometer();
+            Thermometer thermometer2 = new Thermometer();
+            System.out.println(thermometer1.getTemperature());
+            System.out.println(thermometer2.getTemperature());
+            thermometer1.increase();
+            System.out.println(thermometer1.getTemperature());
+            System.out.println(thermometer2.getTemperature());
+            
+            for (int i = 0; i < 10; i++) {
+                thermometer2.increase();
+            }
+            System.out.println(thermometer1.getTemperature());
+            System.out.println(thermometer2.getTemperature());
+            thermometer1.reset();
+            thermometer2.reset();
+            System.out.println(thermometer1.getTemperature());
+            System.out.println(thermometer2.getTemperature());
+        }
+}
+\end{javacodebox}
+
+\subsection{\mintinline{java}{Car} -Klasse}
+
+\paragraph{Aufgabe:}
+Programmieren Sie eine Klasse \mintinline{java}{Car}, welche die Marke, das Modell und den Jahrgang des Fahrzeuges modelliert. Der Konstruktor soll diese drei Instanzvariablen gemäss Parameterübergabe initialisieren – zudem schreiben Sie Getter und Setter für alle Instanzvariablen und eine \mintinline{java}{toString} Methode für eine einzeilige Repräsentation von \mintinline{java}{Car} Objekten. Schliesslich definieren Sie eine Methode \mintinline{java}{isAntique}, welche einen boolean zurückgibt, der anzeigt ob das Auto aktuell älter ist als 45 Jahre.
+
+In einer zweiten Klasse \mintinline{java}{Garage} instanziieren Sie drei \mintinline{java}{Car} Objekte und testen alle programmierten Methoden.
+
+\textbf{Mögliche Lösung:}
+
+\subsubsection{Klasse \mintinline{java}{Car.java}}
+
+\begin{javacodebox}
+import java.time.LocalDate;
+
+public class Car {
+    
+    private String brand;
+    private String model;
+    private int year;
+    private boolean isAntique;
+    private final int ANTIQUE_AGE = 45;
+
+    public Car(String brand, String model, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.isAntique = checkIfAntique();
+    }
+
+    public String getBrand() {
+        return this.brand;
+    }
+
+    public String getModel() {
+        return this.model;
+    }
+
+    public int getYear() {
+        return this.year;
+    }
+
+    public boolean getIsAntique() {
+        return this.isAntique;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setModel(String model) {
+        this.model= model;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+        this.isAntique = checkIfAntique();
+    }
+
+    private boolean checkIfAntique() {
+        int currentYear = LocalDate.now().getYear();
+        if (currentYear - this.year > ANTIQUE_AGE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isAntique() {
+        return this.isAntique;
+    }
+
+    public String toString() {
+        return this.brand + " " + this.model + " " + this.year + " Is Antique: " + this.isAntique;
+    }
+}
+\end{javacodebox}
+
+\subsubsection{Klasse \mintinline{java}{Garage.java}}
+
+\begin{javacodebox}
+public class Garage {
+        
+        public static void main(String[] args) {
+            Car car1 = new Car("BMW", "M3", 1900);
+            Car car2 = new Car("Mercedes", "C63", 2010);
+            Car car3 = new Car("Audi", "RS6", 2015);
+            System.out.println("Car1 " + car1);
+            System.out.println("Car2 " + car2);
+            System.out.println("Car3 " + car3);
+
+            car1.setYear(2000);
+            System.out.println("Set car1 year to 2000");
+            System.out.println("Car1: " + car1);
+
+            car2.setBrand("Mercedes-Benz");
+            System.out.println("Set car2 brand to Mercedes-Benz");
+            System.out.println("Car2: " + car2);
+
+            car3.setModel("RS7");
+            System.out.println("Set car3 model to RS7");
+            System.out.println("Car3: " + car3);
+
+            car1.setYear(1984);
+            System.out.println("Set car1 year to 1984");
+            System.out.println("Car1: " + car1.getYear());
+            System.out.println("Car1: " + car1.isAntique());
+
+            car2.setBrand("Mercedes");
+            System.out.println("Set car2 brand to Mercedes");
+            System.out.println("Car2: " + car2.getBrand());
+
+            car3.setModel("RS5");
+            System.out.println("Set car3 model to RS5");
+            System.out.println("Car3: " + car3.getModel());
+        }
+}
+\end{javacodebox}
+
+\subsection{\mintinline{java}{Cargo} und \mintinline{java}{Box} -Klassen}
+
+\paragraph{Aufgabe:}
+Schreiben Sie eine Klasse \mintinline{java}{Cargo}, welche ein Stückgut mit Länge, Breite, Höhe und einem Namen modelliert (z.B. 30, 44, 65, "Kaffeemaschine"). Schreiben Sie einen Konstruktor, Getter und Setter für alle Instanzvariablen und eine Methode \mintinline{java}{toString}.
+
+Schreiben Sie eine Klasse \mintinline{java}{Box}, die Instanzvariablen für die Länge, Breite und Höhe einer Box enthält. Zusätzlich enthält die Klasse \mintinline{java}{Box} eine Instanzvariable \mintinline{java}{full} vom Typ boolean, die angibt, ob die Box gefüllt ist oder nicht, sowie eine Instanzvariable \mintinline{java}{cargo} vom Typ \mintinline{java}{Cargo}. Der Konstruktor setzt die Länge, Breite und Höhe einer Box gemäss Parametern – neu instanziierte \mintinline{java}{Box} Objekte sollen standardmässig leer sein. Definieren Sie einen zweiten Konstruktor ohne Parameter, der eine Standard-Box mit Länge, Breite und Höhe 1 generiert. Zusätzlich definieren Sie eine Methode \mintinline{java}{getCapacity}, die das Volumen der Box berechnet und zurückgibt.
+
+Schliesslich schreiben Sie eine Methode \mintinline{java}{addCargo}, welche ein Objekt vom Typ \mintinline{java}{Cargo} als Parameter entgegennimmt. Falls dieses Stückgut gemäss Länge, Breite und Höhe in die Box passt, passen Sie die Variable \mintinline{java}{full} und die Instanzvariable \mintinline{java}{cargo} an und geben \mintinline{java}{true} zurück (andernfalls \mintinline{java}{false}).
+
+Testen Sie die Klasse \mintinline{java}{Box}, indem Sie in einer weiteren Klasse \mintinline{java}{BoxTest} drei \mintinline{java}{Box} Objekte instanziieren, manipulieren und ausgeben.
+
+\textbf{Mögliche Lösung:}
+
+\subsubsection{Klasse \mintinline{java}{Cargo.java}}
+
+\begin{javacodebox}
+public class Cargo {
+    
+    private String name;
+    private int length;
+    private int width;
+    private int height;
+
+    public Cargo(String name, int length, int width, int height) {
+        this.name = name;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getLength() {
+        return this.length;
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLength(int length) {
+        if (length > 0) {
+            this.length = length;
+        }
+    }
+
+    public void setWidth(int width) {
+        if (width > 0) {
+            this.width = width;
+        }
+    }
+
+    public void setHeight(int height) {
+        if (height > 0) {
+            this.height = height;
+        }
+    }
+
+    public String toString() {
+        return "Cargo: \tName: " + this.name + " Dimensions: " + this.length + "x" + this.width + "x" + this.height;
+    }
+}
+\end{javacodebox}
+
+\subsubsection{Klasse \mintinline{java}{Box.java}}
+
+\begin{javacodebox}
+import java.util.ArrayList;
+import java.util.Collections;
+
+
+public class Box {
+    
+    private Cargo cargo;
+    private boolean isFull;
+    private int length;
+    private int width;
+    private int height;
+
+    public Box(int length, int width, int height) {
+        this.length = length;
+        this.width = width;
+        this.height = height;
+        this.isFull = false;
+    }
+
+    public Box() {
+        this(1, 1, 1); // refers to the other constructor
+    }
+
+    public int getCapacity() {
+        return this.length * this.width * this.height;
+    }
+
+    public int getLength() {
+        return this.length;
+    }
+
+    public int getWidth() {
+        return this.width;
+    }   
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public boolean getIsFull() {
+        return this.isFull;
+    }
+
+    public Cargo getCargo() {
+        return this.cargo;
+    }
+
+    public void setLength(int length) {
+        if (length > 0) {
+            this.length = length;
+        }
+    }
+
+    public void setWidth(int width) {
+        if (width > 0) {
+            this.width = width;
+        }
+    }
+
+    public void setHeight(int height) {
+        if (height > 0) {
+            this.height = height;
+        }
+    }
+
+    public boolean addCargo(Cargo cargo) {
+        if (this.isFull) {
+            System.out.println("Box already full");
+            return false;
+
+        /*
+         * System welches sicherstellt, dass das Cargo schlau eingepackt wird. Box kann ja gedreht werden
+         * ArrayList<Integer> erstellt einen Array
+         */
+        } else { 
+            ArrayList<Integer> cargoDimensions = new ArrayList<>();
+                cargoDimensions.add(cargo.getLength());
+                cargoDimensions.add(cargo.getWidth());
+                cargoDimensions.add(cargo.getHeight());
+            ArrayList<Integer> boxDimensions = new ArrayList<>();
+                boxDimensions.add(this.length);
+                boxDimensions.add(this.width);
+                boxDimensions.add(this.height);
+
+            Collections.sort(cargoDimensions);
+            Collections.sort(boxDimensions);
+            
+            boolean fits = true;
+            for (int i = 0; i < 3; i++) {
+                if (cargoDimensions.get(i) > boxDimensions.get(i)) {
+                    fits = false;
+                    break;
+                }
+            }
+
+            if (fits) {
+                this.cargo = cargo;
+                this.isFull = true;
+                System.out.println("Cargo placed in Box!");
+                return true;
+            } else {
+                System.out.println("Box dimensions are too small for that cargo");
+                return false;
+            }
+
+            
+        }
+    }
+
+    public void removeCargo() {
+        this.cargo = null;
+        this.isFull = false;
+    }
+
+    public String toString() {
+        return "Box: \tDimensions: " + this.length + "x" + this.width + "x" + this.height + " Capacity: " + this.getCapacity() + " " + this.cargo;
+    }
+}
+\end{javacodebox}
+
+\subsubsection{Klasse \mintinline{java}{BoxTest.java}}
+
+\begin{javacodebox}
+public class BoxTest {
+    
+    public static void main(String[] args) {
+        
+        Cargo cargo1 = new Cargo("Kaffeemaschine", 30, 44, 65);
+        Cargo cargo2 = new Cargo("Kühlschrank", 60, 60, 180);
+        Cargo cargo3 = new Cargo("Küchentisch", 80, 120, 75);
+        Cargo cargo4 = new Cargo("Küchenstuhl", 40, 40, 90);
+
+        System.out.println("Cargo1: " + cargo1);
+        System.out.println("Cargo2: " + cargo2);
+        System.out.println("Cargo3: " + cargo3);
+        System.out.println("Cargo4: " + cargo4);
+
+        cargo1.setName("Espressomaschine");
+        System.out.println("Set cargo1 name to Espressomaschine");
+        System.out.println("Cargo1: " + cargo1.getName());
+
+        cargo2.setLength(70);
+        System.out.println("Set cargo2 length to 70");
+        System.out.println("Cargo2: " + cargo2.getName() + " Length: " + cargo2.getLength());
+
+        cargo3.setWidth(100);
+        System.out.println("Set cargo3 width to 100");
+        System.out.println("Cargo3: " + cargo3.getName() + " Width: " + cargo3.getWidth());
+
+        cargo4.setHeight(100);
+        System.out.println("Set cargo4 height to 100");
+        System.out.println("Cargo4: " + cargo4.getName() + " Height: " + cargo4.getHeight());
+
+        Box box1 = new Box(50, 50, 50);
+        Box box2 = new Box(100, 100, 100);
+        Box box3 = new Box();
+
+        System.out.println("Box1: " + box1);
+        System.out.println("Box2: " + box2);
+        System.out.println("Box3: " + box3);
+
+        box1.setLength(100);
+        System.out.println("Set box1 length to 100");
+        System.out.println("Box1: " + box1.getLength());
+
+        box2.setWidth(50);
+        System.out.println("Set box2 width to 50");
+        System.out.println("Box2: " + box2.getWidth());
+
+        box3.setHeight(100);
+        System.out.println("Set box3 height to 100");
+        System.out.println("Box3: " + box3.getHeight());
+
+        System.out.println("\n" + cargo1);
+        System.out.println( box1);
+        System.out.println("Placing cargo1 in box1 (NOTE: Dimensions don't match up, Box has to be turned)");
+        box1.addCargo(cargo1);
+        System.out.println("Box1: " + box1.getCargo());
+
+        System.out.println("Trying to add another cargo into the same Box");
+        box1.addCargo(cargo2);
+
+        System.out.println("\nEmpty Box1");
+        box1.removeCargo();
+        System.out.println(box1);
+
+        cargo1.setWidth(50);
+        System.out.println(cargo1);
+
+        System.out.println("\n" + cargo1);
+        System.out.println( box1);
+        System.out.println("Placing cargo1 in box1 (NOTE: Dimensions don't match up, Box has to be turned)");
+        box1.addCargo(cargo1);
+        System.out.println("Box1: " + box1.getCargo());
+
+        System.out.println("\nEmpty Box1");
+        box1.removeCargo();
+        System.out.println(box1);
+
+        cargo1.setWidth(100);
+        System.out.println(cargo1);
+
+        System.out.println("\n" + cargo1);
+        System.out.println( box1);
+        System.out.println("Placing cargo1 in box1 (NOTE: Dimensions don't match up! Cargo won't fit)");
+        box1.addCargo(cargo1);
+        System.out.println("Box1: " + box1);
+
+
+    }
+}
+\end{javacodebox}
+
+\subsection{\mintinline{java}{Book} -Klasse}
+
+\paragraph{Aufgabe:}
+Auf ILIAS (Übungen → Serie 3) finden Sie eine Datei \mintinline{java}{Book.java}. Ihre Aufgabe ist es die darin implementierte Klasse \mintinline{java}{Book} wie folgt zu erweitern:
+
+\begin{enumerate}
+    \item Schreiben Sie einen Konstruktor sowie Getter und Setter für alle Instanzvariablen.
+    \item Implementieren Sie die Methode \mintinline{java}{age}, welche das Alter eines Buches (Anzahl Tage seit Erscheinungsdatum) berechnet und zurückgibt.
+    \item Implementieren Sie die Methode \mintinline{java}{toString}, die alle Informationen eines \mintinline{java}{Book} Objekts als String zurückgibt. Beispiel: 123, Die Blechtrommel, Günter Grass, 1.1.1959
+    \item Vervollständigen Sie die Methode \mintinline{java}{input}, welche die Werte für \mintinline{java}{id}, \mintinline{java}{title}, \mintinline{java}{author} und \mintinline{java}{dateOfPublication} von der Kommandozeile vom Benutzer einliest und im jeweiligen \mintinline{java}{Book} Objekt abspeichert. Ungültige Eingaben müssen Sie nicht abfangen.
+\end{enumerate}
+
+Testen Sie sämtliche Methoden der Klasse \mintinline{java}{Book} in einer zusätzlichen Klasse \mintinline{java}{BookShelf}.
+
+\textbf{Mögliche Lösung:}
+
+\subsubsection{Klasse \mintinline{java}{Book.java}}
+
+\end{document}
