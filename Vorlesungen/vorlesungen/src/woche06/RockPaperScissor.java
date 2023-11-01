@@ -39,6 +39,7 @@ public class RockPaperScissor {
                     tie++;
             }
         }
+        scan.close();
         System.out.println("Du hast " + won + " mal gewonnen, " + loss + " mal verloren und " + tie + " mal unentschieden gespielt.");
 
     }
