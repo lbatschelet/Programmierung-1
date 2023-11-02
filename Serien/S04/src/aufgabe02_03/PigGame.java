@@ -41,8 +41,6 @@ public class PigGame {
 
         printTitle();
         printRules();
-        player1.resetPoints();
-        player2.resetPoints();
         System.out.println("---------------");
         System.out.println("1. Singleplayer");
         System.out.println("2. Multiplayer");
@@ -121,8 +119,15 @@ public class PigGame {
 
     public void playerTurn() {
         boolean turnOver = false;
-        while (!turnOver) {
+        while (!turnOver) { 
+
             turnOver = roll();
+
+            if (playerToPlay.hasWon(POINTS_TO_WIN)) {
+                turnOver = true;
+            }
+
+        
 
             if (!turnOver) {
                 System.out.println("Do you want to roll the Dice again? (y/n): ");
@@ -135,14 +140,21 @@ public class PigGame {
                 turnOver = "n".equalsIgnoreCase(another);
                     
             }
+
         }
     }
 
     public void computerTurn() {
         boolean turnOver = false;
         while (!turnOver) {
+
             turnOver = roll();
-            if (!turnOver) {
+
+            if (playerToPlay.hasWon(POINTS_TO_WIN)) {
+                turnOver = true;
+            }
+
+            if (!turnOver && !playerToPlay.hasWon(POINTS_TO_WIN)) {
                 if (playerToPlay.getPointsThisRound() >= MAX_COMPUTER_POINTS) {
                     playerToPlay.addPointsTotal(playerToPlay.getPointsThisRound());
                     playerToPlay.removePointsThisRound();
@@ -158,8 +170,7 @@ public class PigGame {
         
         if (pairOfDice.isDouble1()) {
             System.out.println(playerToPlay.getName() + " lost all their points");
-            playerToPlay.removePointsTotal();
-            playerToPlay.removePointsThisRound();
+            playerToPlay.resetPoints();
             return true;
         } else if (pairOfDice.isSingle1()) {
             System.out.println(playerToPlay.getName() + " lost " + playerToPlay.getPointsThisRound() + " points they had this round");
@@ -169,7 +180,7 @@ public class PigGame {
             playerToPlay.addPointsThisRound(pairOfDice.getSum());
             System.out.println(playerToPlay.getName() + " has " + playerToPlay.getPointsThisRound() + " points on the line.");
             if (playerToPlay.getPointsTotal() > 0) {
-                System.out.println("That would be " + (playerToPlay.getPointsTotal() + playerToPlay.getPointsThisRound()) + " points in total.");
+                System.out.println("That would be " + (playerToPlay.intermediatePoints()) + " points in total.");
             }
             return false;
         }
@@ -186,8 +197,8 @@ public class PigGame {
             printCongratulation();
         }
         System.out.println("----------");
-        System.out.println(player1.getName() + " has " + player1.getPointsTotal() + " points.");
-        System.out.println(player2.getName() + " has " + player2.getPointsTotal() + " points.");
+        System.out.println(player1.getName() + " has " + player1.intermediatePoints() + " points.");
+        System.out.println(player2.getName() + " has " + player2.intermediatePoints() + " points.");
         if (player1.hasWon(POINTS_TO_WIN)) {
             System.out.println(player1.getName() + " has won!");
         } else {
@@ -198,6 +209,8 @@ public class PigGame {
         Scanner scanner = new Scanner(System.in);
         String another = scanner.next();
         if ("y".equalsIgnoreCase(another)) {
+            player1.reset("Player 1");
+            player2.reset("Player 2");
             start();
         } else {
             System.exit(0);
@@ -249,7 +262,7 @@ public class PigGame {
 
     public void printRules() {
         System.out.println("# This is a luck based game where you roll a pair of dice.");
-        System.out.println("# The goal is to reach 100 points.");
+        System.out.println("# The goal is to reach " + POINTS_TO_WIN + " points.");
         System.out.println("# If you roll a 1, you lose all points for this round, and your turn is over.                                         #");
         System.out.println("# If you roll two 1s, you lose all points you gathered so far, and your turn is over.");
         System.out.println("# After each roll you can decide to roll again or end your turn.");

@@ -52,6 +52,7 @@ public class Player {
         this.name = newName;
     }
 
+
     /**
      * setters
      */
@@ -67,6 +68,7 @@ public class Player {
     public void setComputer(boolean isComputer) {
         this.isComputer = isComputer;
     }
+    
 
     /**
      * other methods
@@ -97,12 +99,22 @@ public class Player {
     }
 
     public boolean hasWon(int pointsToWin) {
-        return (this.pointsTotal + this.pointsThisRound) >= pointsToWin;
+        return (this.intermediatePoints()) >= pointsToWin;
     }
 
     public void resetPoints() {
         this.pointsThisRound = 0;
         this.pointsTotal = 0;
+    }
+
+    public void reset(String name) {
+        this.resetPoints();
+        this.name = name;
+        this.isComputer = false;
+    }
+
+    public int intermediatePoints() {
+        return this.pointsTotal + this.pointsThisRound;
     }
 
 
