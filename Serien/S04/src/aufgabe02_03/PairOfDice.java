@@ -53,4 +53,12 @@ public class PairOfDice {
         this.dice2.roll();
         return this.getSum();
     }
+
+    public boolean isDouble1() {
+        return this.getDice1() == 1 && this.getDice2() == 1;
+    }
+
+    public boolean isSingle1() {
+        return this.getDice1() == 1 || this.getDice2() == 1;
+    }
 }

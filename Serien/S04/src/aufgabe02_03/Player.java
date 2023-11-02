@@ -56,5 +56,36 @@ public class Player {
         return this.name + " has " + this.pointsTotal + " points.";
     }
 
+    public boolean rollTheDice(PairOfDice pairOfDice) {
+        pairOfDice.rollThePair();
+        System.out.println("Dice 1: " + pairOfDice.getDice1());
+        System.out.println("Dice 2: " + pairOfDice.getDice2());
+        
+        if (pairOfDice.isDouble1()) {
+            System.out.println(this.name + " lost all points");
+            this.removePointsTotal();
+            this.removePointsThisRound();
+            return true; // turnOver = true
+        } else if (pairOfDice.isSingle1()) {
+            System.out.println(this.name + " lost " + this.pointsThisRound + " points");
+            this.removePointsThisRound();
+            return true; // turnOver = true
+        } else {
+            this.addPointsThisRound(pairOfDice.getSum());
+            System.out.println(this.name + " has " + this.pointsThisRound + " points on the line");
+            return false; // turnOver = false
+        }
+    }
+
+    public void endTurn(PigGame game) {
+        this.addPointsTotal(this.pointsThisRound);
+        this.removePointsThisRound();
+        game.changePlayerToPlay();
+    }
+
+    public boolean hasWon(int pointsToWin) {
+        return this.pointsTotal >= pointsToWin;
+    }
+
 
 }
