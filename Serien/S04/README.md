@@ -1,18 +1,20 @@
 Lukas Batschelet (16-499-733)
-
+# P1 - Serie 4
 
 
 ## Theorieaufgaben
 
 ### 1. Schaltjahre
 
-> [!Aufgabe]
 > Die gregorianische Schalttagsregelung besteht aus folgenden Regeln:
 > 
 > - Die durch 4 ganzzahlig teilbaren Jahre sind, abgesehen von den folgenden Ausnahmen, Schaltjahre.
 > - Säkularjahre, also die Jahre, die ein Jahrhundert abschliessen (z.B. 1800 oder 1900), sind *keine* Schaltjahre, es sei denn, dass das Säkularjahr auch durch 400 ganzzahlig teilbar ist (zum Beispiel das Jahr 2000).In diesem Fall ist auch das Säkularjahr ein Schaltjahr.
 > 
 > Schreiben Sie eine Methode, die für ein als Parameter übergebenes Jahr `year` überprüft, ob dieses ein Schaltjahr ist oder nicht. Erzeugen Sie eine entsprechen Ausgabe. Geben Sie eine Fehlermeldung aus, falls das Jahr kleiner ist als 1582 (das Jahr in dem der gregorianische Kalender eingeführt wurde).
+
+<summary>
+	<details>Mögliche Lösung anzeigen</details>
 
 #### Mögliche Lösung
 
@@ -38,9 +40,11 @@ final int GREGORIAN_START_YEAR = 1582;
 }
 ```
 
+</summary>
+
 ### 2. Verschachtelte Vergleiche
 
-> [!Aufgabe]
+
 > Es sei
 > 
 > (a) `int num1 = 5, num2 = 4;`
@@ -69,9 +73,11 @@ final int GREGORIAN_START_YEAR = 1582;
 > System.out.print("8 ");
 > ```
 
-<div style="page-break-after: always;"></div>
+<summary>
+	<details>Lösung anzeigen</details>
 
 #### Lösung
+
 ```text
 (a) 1 2 3 4 8
 (b) 1 2 3 4 8
@@ -80,9 +86,14 @@ final int GREGORIAN_START_YEAR = 1582;
 (e) 3 7 8
 ```
 
+</summary>
+
 ### 3. Methode `isIsoceles(int a, int b, int c)`
-> [!Aufgabe]
+
 > Schreiben Sie eine Methode `isIsosceles`, die drei ganze Zahlen als Parameter entgegennimmt (die Längen der drei Seiten eines Dreiecks). Die Methode gibt `true` zurück, falls das Dreieck gleichschenklig aber *nicht* gleichseitig ist (also nur dann, wenn *genau zwei* Seiten gleich lang sind).
+
+<summary>
+	<details>Lösung anzeigen</details>
 
 #### Lösung
 
@@ -92,11 +103,16 @@ public boolean isIsoceles(int a, int b, int c) {
 }
 ```
 
+</summary>
+
 ### 4. Methode `countA(String name)`
-> [!Aufgabe]
+
 > Schreiben Sie eine Methode `countA`, die in einem als Parameter übergebenem `String` `name` die Anzahl der Zeichen `'a'` und `'A'` zählt und diese Anzahl zurückgibt.
 > 
 > *Bemerkung*: Lösen mit einer `for`-Schleife
+
+<summary>
+	<details>Mögliche Lösung anzeigen</details>
 
 #### Mögliche Lösung
 
@@ -113,9 +129,11 @@ public int countA(String name) {
 }
 ```
 
+</summary>
+
 ###  5. Ausgabe einer `do`-Schleife
 
-> [!Aufgabe]
+
 > Welche Ausgabe erzeugt folgendes Code-Fragment?
 > 
 > ```java
@@ -125,6 +143,9 @@ public int countA(String name) {
 > 	low++;
 > } while (low < high);
 > ```
+
+<summary>
+	<details>Lösung anzeigen</details>
 
 #### Lösung
 
@@ -136,11 +157,10 @@ public int countA(String name) {
 4
 ```
 
-<div style="page-break-after: always;"></div>
+</summary>
 
 ### 6. Ausgabe einer verschachtelten `for`-Schleife
 
-> [!Aufgabe]
 > Welche Ausgabe erzeugt folgendes Code-Fragment?
 > 
 > ```java
@@ -149,6 +169,11 @@ public int countA(String name) {
 > 		System.out.println(i + " " + j);
 > }
 > ```
+
+<summary>
+	<details>Lösung anzeigen</details>
+
+#### Lösung
 
 ```text
 1 1
@@ -159,9 +184,10 @@ public int countA(String name) {
 3 1
 ```
 
+</summary>
+
 ### 7. Umwandeln einer `for`-Schleife in eine `while`-Schleife
 
-> [!Aufgabe]
 > Schreiben Sie das folgende Code-Fragment mit Hilfe einer `while`-Schleife um.
 > 
 > ```java
@@ -172,6 +198,11 @@ public int countA(String name) {
 > System.out.println(value);
 > ```
 
+<summary>
+	<details>Mögliche Lösung anzeigen</details>
+
+#### Mögliche Lösung
+
 ```java
 int value = 0, num = 10;
 while (num <= 40) {
@@ -181,11 +212,12 @@ num += 10;
 System.out.println(value);
 ```
 
-<div style="page-break-after: always;"></div>
+</summary>
 
 ## Implementationsaufgaben
 
-> [!Aufgabe]
+### 1. CoinRace
+
 > Programmieren Sie eine Klasse `Coin`, die eine Münze repräsentieren soll. Eine Münze zeigt entweder Kopf oder Zahl an (speichern Sie diese Information als Variable vom Typ `boolean`).
 > 
 > Der Konstruktor der Klasse `Coin` soll eine Münze zufällig instanziieren – also mit 50% Wahrscheinlichkeit soll eine neu instanziierte Münze Kopf zeigen (und sonst Zahl). Programmieren Sie hierzu eine Methode `flip`, die den Münzwurf simuliert. Ergänzen Sie Ihre Klasse mit einer Methode `equals` und einer Methode `toString`. Zwei Münzen sind gleich, wenn beide die gleiche Seite anzeigen. Die Methode `toString` soll Kopf oder Zahl zurückgeben – verwenden Sie hierzu einen *Conditional Operator*.
@@ -203,15 +235,34 @@ System.out.println(value);
 > 
 > Hinweis: Es kann auch Unentschieden geben!
 
+#### Quellcode
 
-> [!Aufgabe]
+[Coin.java](/src/Coin.java)
+[CoinRace.java](/src/CoinRace.java)
+
+### 2. PairOfDice
+
 > Übernehmen Sie die Klasse `Dice` aus dem Skript. Schreiben Sie dann eine Klasse `PairOfDice`, welche aus zwei `Dice` Objekten besteht. Definieren Sie Methoden zum Setzen und Auslesen der Punkte der einzelnen Würfel, eine Methode um beide Würfel zu werfen und eine Methode, welche die aktuelle Summe der Würfel zurückgibt.
 
+#### Quellcode
 
-> [!Aufgabe]
+[Dice.java](/src/Dice.java)
+[PairOfDice.java](/src/PairOfDice.java)
+[PairOfDiceTest.java](/src/PairOfDiceTest.java)
+
+### 3. Pig
+
 > Implemetieren Sie das Spiel *Pig*. In diesem Spiel gewinnt derjenige Spieler, der zuerst die Punktesumme 100 gesammelt hat. Innerhalb eines Spielzugs wirft der aktuelle Spieler so oft er möchte je zwei Würfel (verwenden Sie also die Klasse `PairOfDice` aus Aufgabe 2). Dabei werden alle Punkte zusammengezählt, bis entweder eine EINS gewürfelt wird, dann ist der Zug zu Ende und alle Punkte dieses Zugs sind verloren und der andere Spieler ist an der Reihe, oder der Spieler die Würfel weiterreicht und seinen Zugfreiwillig beendet. Nur in diesem Fall werden die gewürfelten Augen aufsummiert und dem Konto des Spielers gutgeschrieben. Sollte der Spieler zwei EINSEN gleichzeitig würfeln, verliert er sämtliche bis zu diesem Zeitpunkt gesammelten Punkte auf seinem Konto und sein Zug ist ebenfalls zu Ende.
 > 
 > Nach jedem Wurf muss ein Spieler also entscheiden, ob er weiter würfeln will (und so riskiert, dass er die Punkte des aktuellen Zuges oder sogar sämtliche Punkte verliert) oder ob er die Würfel an den Gegenspieler abgeben möchte (und so riskiert, dass der Gegenspieler gewinnt).
 > 
 > Implementieren Sie das Spiel in den Modi Ein- und Zweispieler: Im Einspielermodus spielt der Spieler gegen den Rechner. Die Strategie des Rechners ist es, solange die aktuelle Summe kleiner ist als 20, weiterzuwürfeln. Bei einer Summe grösser-gleich 20 gibt er den Zug also immer freiwillig ab.
+
+#### Quellcode
+
+[Pig.java](/src/Pig.java)
+[PigGame.java](/src/PigGame.java)
+[Player.java](/src/Player.java)
+[Dice.java](/src/Dice.java)
+[PairOfDice.java](/src/PairOfDice.java)
 
