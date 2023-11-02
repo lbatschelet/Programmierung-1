@@ -5,11 +5,13 @@ public class Player {
     private int pointsThisRound;
     private int pointsTotal;
     private String name;
+    private boolean isComputer;
 
     public Player(String name) {
         this.pointsThisRound = 0;
         this.pointsTotal = 0;
         this.name = name;
+        this.isComputer = false;
     }
 
     public String getName() {
@@ -26,6 +28,14 @@ public class Player {
 
     public int getPointsTotal() {
         return this.pointsTotal;
+    }
+
+    public boolean isComputer() {
+        return this.isComputer;
+    }
+
+    public void setComputer(boolean isComputer) {
+        this.isComputer = isComputer;
     }
 
     public void setPointsThisRound(int points) {

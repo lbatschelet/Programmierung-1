@@ -41,6 +41,8 @@ public class PigGame {
     public final int POINTS_TO_WIN = 100;
     public static PairOfDice pairOfDice = new PairOfDice();
 
+    public final int MAX_COMPUTER_POINTS = 20;
+
     public PigGame() {
         PigGame.player1 = new Player("Player 1");
         PigGame.player2 = new Player("Player 2");
@@ -49,6 +51,14 @@ public class PigGame {
 
     public void start() {
         System.out.println("Welcome to Pig!");
+        System.out.println("---------------");
+        System.out.println("This is a luck based game where you roll a pair of dice.");
+        System.out.println("The goal is to reach 100 points.");
+        System.out.println("If you roll a 1, you lose all points for this round, and your turn is over.");
+        System.out.println("If you roll two 1s, you lose all points you gathered so far, and your turn is over.");
+        System.out.println("After each roll you can decide to roll again or end your turn.");
+        System.out.println("If you end your turn, the points for this round are added to your total points.");
+        System.out.println("Good luck!");
         System.out.println("---------------");
         System.out.println("1. Singleplayer");
         System.out.println("2. Multiplayer");
@@ -60,15 +70,16 @@ public class PigGame {
         switch (mode) {
             case 1:
                 enterName(player1);
-                enterName(player2);
+                player2.setName("Computer");
+                player2.setComputer(true);
                 playerToPlay = player1;
-                singleplayer();
+                play();
                 break;
             case 2:
                 enterName(player1);
                 enterName(player2);
                 playerToPlay = player1;
-                multiplayer();
+                play();
                 break;
             case 3:
                 System.exit(0);
@@ -80,7 +91,7 @@ public class PigGame {
         }
     }
 
-    public void multiplayer() {
+    public void play() {
         while (!player1.hasWon(POINTS_TO_WIN) && !player2.hasWon(POINTS_TO_WIN)) {
             System.out.println(player1.getName() + " has " + player1.getPointsTotal() + " points.");
             System.out.println(player2.getName() + " has " + player2.getPointsTotal() + " points.");
@@ -91,8 +102,8 @@ public class PigGame {
             turn();
             changePlayerToPlay();
         }
-    }
-  
+        endOfGame();
+    } 
 
     public void changePlayerToPlay() {
         if (playerToPlay == player1) {
@@ -110,6 +121,14 @@ public class PigGame {
     }
 
     public void turn() {
+        if (playerToPlay.isComputer()) {
+            computerTurn();
+        } else {
+            playerTurn();
+        }
+    }
+
+    public void playerTurn() {
         boolean turnOver = false;
         while (!turnOver) {
             turnOver = playerToPlay.rollTheDice(pairOfDice);
@@ -128,16 +147,52 @@ public class PigGame {
         }
     }
 
-    public void singleplayer() {
-        while (!player1.hasWon(POINTS_TO_WIN) && !player2.hasWon(POINTS_TO_WIN)) {
-            System.out.println(player1.getName() + " has " + player1.getPointsTotal() + " points.");
-            System.out.println(player2.getName() + " has " + player2.getPointsTotal() + " points.");
-            System.out.println(playerToPlay.getName() + " is playing.");
-            System.out.println("Press enter to roll the dice.");
-            Scanner scanner = new Scanner(System.in);
-            scanner.nextLine();
-            turn();
-            changePlayerToPlay();
+    public void computerTurn() {
+        boolean turnOver = false;
+        while (!turnOver) {
+            turnOver = playerToPlay.rollTheDice(pairOfDice);
+            if (!turnOver) {
+                if (playerToPlay.getPointsThisRound() >= MAX_COMPUTER_POINTS) {
+                    playerToPlay.addPointsTotal(playerToPlay.getPointsThisRound());
+                    playerToPlay.removePointsThisRound();
+                    turnOver = true;
+                }
+            }
+        }
+    }
+
+
+
+    public void endOfGame() {
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("                                       .'''.       ");
+        System.out.println("        .'''.      .         *''*     :_\\/_:     . ");
+        System.out.println("       :_\\/_:   _\\(/_  .:.*_\\/_*   : /\\ :  .'.:.'. ");
+        System.out.println("  .'''.: /\\ :   ./)\\   ':'* /\\ * :  '..'.  -=:o:=- ");
+        System.out.println(" :_\\/_:'.:::.    ' *''*    * '.\\'/.  _\\(/_'.':'.");
+        System.out.println(" : /\\ : :::::    *_\\/_*     -= o =-  /)\\    '  *");
+        System.out.println("  '..'  ':::'     * /\\ *     .'/\\.   '");
+        System.out.println("      *            *..*         :");
+        System.out.println("        *");
+        System.out.println("        *");
+        System.out.println("Game over!");
+        System.out.println("----------");
+        System.out.println(player1.getName() + " has " + player1.getPointsTotal() + " points.");
+        System.out.println(player2.getName() + " has " + player2.getPointsTotal() + " points.");
+        if (player1.hasWon(POINTS_TO_WIN)) {
+            System.out.println(player1.getName() + " has won!");
+        } else {
+            System.out.println(player2.getName() + " has won!");
+        }
+        System.out.println("----------");
+        System.out.println("Do you want to play again? (y/n): ");
+        Scanner scanner = new Scanner(System.in);
+        String another = scanner.next();
+        if ("y".equalsIgnoreCase(another)) {
+            start();
+        } else {
+            System.exit(0);
         }
     }
 

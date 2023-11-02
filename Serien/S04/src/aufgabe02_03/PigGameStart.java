@@ -8,9 +8,5 @@ public class PigGameStart {
 
         game.start();
 
-        
-
-
-
     }
 }
