@@ -186,23 +186,9 @@ i. true
 
 > Schreiben Sie ein Programm, welches den Satz "Winter is coming" ausgibt (erste Version: auf einer Zeile; zweite Version: jedes Wort auf einer separaten Zeile).
 
-<details>
-    <summary>Lösung anzeigen</summary>
+#### Quellcode
 
-```java
-public class WinterIsComing {
-    public static void main(String[] args) {
-		System.out.println("\"Winter is coming\"");
-		System.out.println("\"Winter \n" +
-				"is \n" +
-				"coming\"");
-	}
-}
-```
-
-[Vollständiger Quellcode: `WinterIsComing.java`](../../23HS_P1_Main_Java_Project/src/serien/serie01/WinterIsComing.java)
-
-</details>
+- [WinterIsComing.java](src/aufgabe01/WinterIsComing.java)
 
 ### 2. Einfache Berechnungen - `Quotient.java`
 
@@ -210,43 +196,9 @@ public class WinterIsComing {
 > 
 > Beobachten Sie insbesondere das Programmverhalten bei Eingabe der Zahl `0` als Divisor und versuchen Sie diesen Laufzeitfehler abzufangen.
 
-<details>
-    <summary>Mögliche Lösung anzeigen</summary>
+#### Quellcode
 
-```java
-import java.util.Scanner;
-
-public class Quotient {
-    public static void main(String[] args) {
-
-        System.out.println("Dieses Programm berechnet den Quotienten zweier Zahlen \"a\" und \"b\".");
-        
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Geben Sie den Teil \"a\" ein:");
-        double var1 = scan.nextDouble();
-        
-        System.out.println("Geben Sie den Teil \"b\" ein:");
-        double var2 = scan.nextDouble();
-        
-        if (var2 != 0) { //Wert 0 führt zu divide by zero
-            double quotientDouble = (var1 * var1) / var2;
-            // int quotientInt = (int) var1 * (int) var1) / (int) var2;
-            int quotientInt = (int) quotientDouble;
-            System.out.println("________________________________________________________________________\n" + 
-                "Der Quotient Ihrer Zahlen: \t" + quotientDouble + 
-                "\nUnd als \"int\":\t \t \t" + quotientInt);
-        } else { 
-            System.out.println("Geben Sie nicht 0 ein!");
-        }
-
-        scan.close();
-    }
-}
-```
-
-[Vollständiger Quellcode: `Quotient.java`](../../23HS_P1_Main_Java_Project/src/serien/serie01/Quotient.java)
-
-</details>
+- [Quotient.java](src/aufgabe02/Quotient.java)
 
 ### 3. Benutzerinteraktion - `HumanThermometer.java`
 
@@ -256,35 +208,6 @@ public class Quotient {
 
 > Hinweis: Verwenden Sie Konstanten für beide Temperaturgrenzen.
 
-<details>
-    <summary>Mögliche Lösung anzeigen</summary>
+#### Quellcode
 
-```java
-import java.util.Scanner;
-
-public class HumanThermometer {
-    public static void main(String[] args) {
-		final int LOWER_BOUND = 15;
-		final int UPPER_BOUND = 24;
-		
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Die aktuelle Temperatur: ");
-		int temperature = scan.nextInt();
-		
-		if (temperature < LOWER_BOUND) {
-			System.out.println("Es ist kalt");
-		} 
-		else if ((LOWER_BOUND <= temperature) && (temperature <= UPPER_BOUND)) {
-			System.out.println("Es ist angenehm");
-		} 
-		else
-			System.out.println("Es ist warm");
-		
-		scan.close();
-	}
-}
-```
-
-[Vollständiger Quellcode: `HumanThermometer.java`](../../23HS_P1_Main_Java_Project/src/serien/serie01/HumanThermometer.java)
-
-</details>
+- [HumanThermometer.java](src/aufgabe03/HumanThermometer.java)
