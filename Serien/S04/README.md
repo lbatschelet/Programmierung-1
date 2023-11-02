@@ -237,8 +237,8 @@ System.out.println(value);
 
 #### Quellcode
 
-[Coin.java](src/Coin.java)
-[CoinRace.java](src/CoinRace.java)
+[Coin.java](src/aufgabe01/Coin.java)
+[CoinRace.java](src/aufgabe01/CoinRace.java)
 
 ### 2. PairOfDice
 
@@ -246,9 +246,9 @@ System.out.println(value);
 
 #### Quellcode
 
-[Dice.java](src/Dice.java)
-[PairOfDice.java](src/PairOfDice.java)
-[PairOfDiceTest.java](src/PairOfDiceTest.java)
+[Dice.java](src/aufgabe02_03/Dice.java)
+[PairOfDice.java](src/aufgabe02_03/PairOfDice.java)
+[PairOfDiceTest.java](src/aufgabe02_03/PairOfDiceTest.java)
 
 ### 3. Pig
 
@@ -261,8 +261,8 @@ System.out.println(value);
 #### Quellcode
 
 [Pig.java]())
-[PigGame.java](src/PigGame.java)
-[Player.java](src/Player.java)
-[Dice.java](src/Dice.java)
-[PairOfDice.java](src/PairOfDice.java)
+[PigGame.java](src/aufgabe02_03/PigGame.java)
+[Player.java](src/aufgabe02_03/Player.java)
+[Dice.java](src/aufgabe02_03/Dice.java)
+[PairOfDice.java](src/aufgabe02_03/PairOfDice.java)
 
