@@ -13,8 +13,8 @@ Lukas Batschelet (16-499-733)
 > 
 > Schreiben Sie eine Methode, die für ein als Parameter übergebenes Jahr `year` überprüft, ob dieses ein Schaltjahr ist oder nicht. Erzeugen Sie eine entsprechen Ausgabe. Geben Sie eine Fehlermeldung aus, falls das Jahr kleiner ist als 1582 (das Jahr in dem der gregorianische Kalender eingeführt wurde).
 
-<summary>
-	<details>Mögliche Lösung anzeigen</details>
+<details>
+	<summary>Mögliche Lösung anzeigen</summary>
 
 #### Mögliche Lösung
 
@@ -40,7 +40,7 @@ final int GREGORIAN_START_YEAR = 1582;
 }
 ```
 
-</summary>
+</details>
 
 ### 2. Verschachtelte Vergleiche
 
@@ -73,8 +73,8 @@ final int GREGORIAN_START_YEAR = 1582;
 > System.out.print("8 ");
 > ```
 
-<summary>
-	<details>Lösung anzeigen</details>
+<details>
+	<summary>Lösung anzeigen</summary>
 
 #### Lösung
 
@@ -86,14 +86,14 @@ final int GREGORIAN_START_YEAR = 1582;
 (e) 3 7 8
 ```
 
-</summary>
+</details>
 
 ### 3. Methode `isIsoceles(int a, int b, int c)`
 
 > Schreiben Sie eine Methode `isIsosceles`, die drei ganze Zahlen als Parameter entgegennimmt (die Längen der drei Seiten eines Dreiecks). Die Methode gibt `true` zurück, falls das Dreieck gleichschenklig aber *nicht* gleichseitig ist (also nur dann, wenn *genau zwei* Seiten gleich lang sind).
 
-<summary>
-	<details>Lösung anzeigen</details>
+<details>
+	<summary>Lösung anzeigen</summary>
 
 #### Lösung
 
@@ -103,7 +103,7 @@ public boolean isIsoceles(int a, int b, int c) {
 }
 ```
 
-</summary>
+</details>
 
 ### 4. Methode `countA(String name)`
 
@@ -111,8 +111,8 @@ public boolean isIsoceles(int a, int b, int c) {
 > 
 > *Bemerkung*: Lösen mit einer `for`-Schleife
 
-<summary>
-	<details>Mögliche Lösung anzeigen</details>
+<details>
+	<summary>Mögliche Lösung anzeigen</summary>
 
 #### Mögliche Lösung
 
@@ -129,7 +129,7 @@ public int countA(String name) {
 }
 ```
 
-</summary>
+</details>
 
 ###  5. Ausgabe einer `do`-Schleife
 
@@ -144,8 +144,8 @@ public int countA(String name) {
 > } while (low < high);
 > ```
 
-<summary>
-	<details>Lösung anzeigen</details>
+<details>
+	<summary>Lösung anzeigen</summary>
 
 #### Lösung
 
@@ -157,7 +157,7 @@ public int countA(String name) {
 4
 ```
 
-</summary>
+</details>
 
 ### 6. Ausgabe einer verschachtelten `for`-Schleife
 
@@ -170,8 +170,8 @@ public int countA(String name) {
 > }
 > ```
 
-<summary>
-	<details>Lösung anzeigen</details>
+<details>
+	<summary>Lösung anzeigen</summary>
 
 #### Lösung
 
@@ -184,7 +184,7 @@ public int countA(String name) {
 3 1
 ```
 
-</summary>
+</details>
 
 ### 7. Umwandeln einer `for`-Schleife in eine `while`-Schleife
 
@@ -198,8 +198,8 @@ public int countA(String name) {
 > System.out.println(value);
 > ```
 
-<summary>
-	<details>Mögliche Lösung anzeigen</details>
+<details>
+	<summary>Mögliche Lösung anzeigen</summary>
 
 #### Mögliche Lösung
 
@@ -212,7 +212,7 @@ num += 10;
 System.out.println(value);
 ```
 
-</summary>
+</details>
 
 ## Implementationsaufgaben
 
@@ -237,8 +237,8 @@ System.out.println(value);
 
 #### Quellcode
 
-[Coin.java](/src/Coin.java)
-[CoinRace.java](/src/CoinRace.java)
+[Coin.java](src/Coin.java)
+[CoinRace.java](src/CoinRace.java)
 
 ### 2. PairOfDice
 
@@ -246,9 +246,9 @@ System.out.println(value);
 
 #### Quellcode
 
-[Dice.java](/src/Dice.java)
-[PairOfDice.java](/src/PairOfDice.java)
-[PairOfDiceTest.java](/src/PairOfDiceTest.java)
+[Dice.java](src/Dice.java)
+[PairOfDice.java](src/PairOfDice.java)
+[PairOfDiceTest.java](src/PairOfDiceTest.java)
 
 ### 3. Pig
 
@@ -260,9 +260,9 @@ System.out.println(value);
 
 #### Quellcode
 
-[Pig.java](/src/Pig.java)
-[PigGame.java](/src/PigGame.java)
-[Player.java](/src/Player.java)
-[Dice.java](/src/Dice.java)
-[PairOfDice.java](/src/PairOfDice.java)
+[Pig.java]())
+[PigGame.java](src/PigGame.java)
+[Player.java](src/Player.java)
+[Dice.java](src/Dice.java)
+[PairOfDice.java](src/PairOfDice.java)
 
