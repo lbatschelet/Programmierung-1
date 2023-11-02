@@ -69,4 +69,54 @@ public class Dice {
 	private void printMessage(String message) {
 		System.out.println(message);
 	}
+
+
+	/**
+	 * Returns an array of strings representing the art of a dice with a certain number of points.
+	 * The art is represented using ASCII characters.
+	 */
+	public String[] getDiceArt() {
+        String[] art = new String[5];
+        String topAndBottom = "+-------+";
+        String middle = "|   *   |";
+        String empty = "|       |";
+        String left = "| *     |";
+        String right = "|     * |";
+        String both = "| *   * |";
+
+        art[0] = topAndBottom;
+        art[4] = topAndBottom;
+        
+        switch (this.points) {
+            case 1:
+                art[1] = art[3] = empty;
+                art[2] = middle;
+                break;
+            case 2:
+                art[1] = left;
+                art[2] = empty;
+                art[3] = right;
+                break;
+            case 3:
+                art[1] = left;
+                art[2] = middle;
+                art[3] = right;
+                break;
+            case 4:
+                art[1] = art[3] = both;
+                art[2] = empty;
+                break;
+            case 5:
+                art[1] = art[3] = both;
+                art[2] = middle;
+                break;
+            case 6:
+                art[1] = art[2] = art[3] = both;
+                break;
+        }
+
+        return art;
+    }
+	
+	
 }

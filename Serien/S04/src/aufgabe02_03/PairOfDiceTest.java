@@ -18,6 +18,13 @@ public class PairOfDiceTest {
         System.out.println("Dice 1: " + pairOfDice.getDice1());
         System.out.println("Dice 2: " + pairOfDice.getDice2());
         System.out.println("Sum: " + pairOfDice.getSum());
+
+        System.out.println("Is double 1? " + pairOfDice.isDouble1());
+        System.out.println("Is single 1? " + pairOfDice.isSingle1());
+
+        pairOfDice.printDicePair();
     }
+
+
     
 }

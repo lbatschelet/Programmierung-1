@@ -61,4 +61,21 @@ public class PairOfDice {
     public boolean isSingle1() {
         return this.getDice1() == 1 || this.getDice2() == 1;
     }
+
+    /**
+     * Prints the dice pair in ASCII art.
+     * see @dice.java for the representation of the single dice.
+     */
+
+    public void printDicePair() {
+        String[] art1 = dice1.getDiceArt();
+        String[] art2 = dice2.getDiceArt();
+
+        for (int i = 0; i < art1.length; i++) {
+            System.out.println(art1[i] + "   " + art2[i]);
+        }
+    }
+
+    
+
 }

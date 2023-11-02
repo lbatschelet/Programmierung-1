@@ -1,4 +1,18 @@
-package aufgabe02_03;
+/**
+ * Player.java
+ * 
+ * @autor   Lukas Batschelet (16-499-733)
+ * @date    2023-11-01
+ * @version 2.0
+ * @serie   4
+ * @aufgabe 3
+ * 
+ * Class to represent a player in the game Pig.
+ * @mainclass Pig.java
+ * 
+ */
+
+ package aufgabe02_03;
 
 public class Player {
 
@@ -14,12 +28,12 @@ public class Player {
         this.isComputer = false;
     }
 
+    /**
+     * getters
+     */
+
     public String getName() {
         return this.name;
-    }
-
-    public void setName(String newName) {
-        this.name = newName;
     }
 
     public int getPointsThisRound() {
@@ -34,9 +48,13 @@ public class Player {
         return this.isComputer;
     }
 
-    public void setComputer(boolean isComputer) {
-        this.isComputer = isComputer;
+    public void setName(String newName) {
+        this.name = newName;
     }
+
+    /**
+     * setters
+     */
 
     public void setPointsThisRound(int points) {
         this.pointsThisRound = points;
@@ -45,6 +63,14 @@ public class Player {
     public void setPointsTotal(int points) {
         this.pointsTotal = points;
     }
+
+    public void setComputer(boolean isComputer) {
+        this.isComputer = isComputer;
+    }
+
+    /**
+     * other methods
+     */
 
     public void addPointsThisRound(int points) {
         this.pointsThisRound += points;
@@ -66,35 +92,17 @@ public class Player {
         return this.name + " has " + this.pointsTotal + " points.";
     }
 
-    public boolean rollTheDice(PairOfDice pairOfDice) {
-        pairOfDice.rollThePair();
-        System.out.println("Dice 1: " + pairOfDice.getDice1());
-        System.out.println("Dice 2: " + pairOfDice.getDice2());
-        
-        if (pairOfDice.isDouble1()) {
-            System.out.println(this.name + " lost all points");
-            this.removePointsTotal();
-            this.removePointsThisRound();
-            return true; // turnOver = true
-        } else if (pairOfDice.isSingle1()) {
-            System.out.println(this.name + " lost " + this.pointsThisRound + " points");
-            this.removePointsThisRound();
-            return true; // turnOver = true
-        } else {
-            this.addPointsThisRound(pairOfDice.getSum());
-            System.out.println(this.name + " has " + this.pointsThisRound + " points on the line");
-            return false; // turnOver = false
-        }
-    }
-
-    public void endTurn(PigGame game) {
-        this.addPointsTotal(this.pointsThisRound);
-        this.removePointsThisRound();
-        game.changePlayerToPlay();
+    public void printPoints() {
+        System.out.println(this.toString());
     }
 
     public boolean hasWon(int pointsToWin) {
-        return this.pointsTotal >= pointsToWin;
+        return (this.pointsTotal + this.pointsThisRound) >= pointsToWin;
+    }
+
+    public void resetPoints() {
+        this.pointsThisRound = 0;
+        this.pointsTotal = 0;
     }
 
 
