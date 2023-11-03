@@ -74,9 +74,11 @@ public class Dice {
 	/**
 	 * Returns an array of strings representing the art of a dice with a certain number of points.
 	 * The art is represented using ASCII characters.
+	 * Each dice is build using 5 seperate lines, and then stored in a String array.
+	 * Each "line" in a dice can be one of 5 different states:
 	 */
 	public String[] getDiceArt() {
-        String[] art = new String[5];
+        String[] diceFace = new String[5];
         String topAndBottom = "+-------+";
         String middle = "|   *   |";
         String empty = "|       |";
@@ -84,39 +86,40 @@ public class Dice {
         String right = "|     * |";
         String both = "| *   * |";
 
-        art[0] = topAndBottom;
-        art[4] = topAndBottom;
+        diceFace[0] = topAndBottom;
+        diceFace[4] = topAndBottom;
         
+		// Building of the dice is done using a switch statement.
+		// The number of points determines which lines are filled with which String.
         switch (this.points) {
             case 1:
-                art[1] = art[3] = empty;
-                art[2] = middle;
+                diceFace[1] = diceFace[3] = empty;
+                diceFace[2] = middle;
                 break;
             case 2:
-                art[1] = left;
-                art[2] = empty;
-                art[3] = right;
+                diceFace[1] = left;
+                diceFace[2] = empty;
+                diceFace[3] = right;
                 break;
             case 3:
-                art[1] = left;
-                art[2] = middle;
-                art[3] = right;
+                diceFace[1] = left;
+                diceFace[2] = middle;
+                diceFace[3] = right;
                 break;
             case 4:
-                art[1] = art[3] = both;
-                art[2] = empty;
+                diceFace[1] = diceFace[3] = both;
+                diceFace[2] = empty;
                 break;
             case 5:
-                art[1] = art[3] = both;
-                art[2] = middle;
+                diceFace[1] = diceFace[3] = both;
+                diceFace[2] = middle;
                 break;
             case 6:
-                art[1] = art[2] = art[3] = both;
+                diceFace[1] = diceFace[2] = diceFace[3] = both;
                 break;
         }
 
-        return art;
+        return diceFace;
     }
-	
 	
 }

@@ -3,6 +3,12 @@
 > [!WARNING]
 > Dieses Repository ist noch in Arbeit und wird erst nach dem Herbstsemester 2023 vollständig sein.
 
+## Inhalt
+
+- [Bearbeitete Serien inkl. Theorieaufgaben und den Aufgabenblättern](Serien)
+- [Zusammenfassung](Zusammenfassung/P1_23HS_Zusammenfassung.pdf)
+- [Notizen und Quellcode aus der Vorbereitung und der Volesung](Vorlesungen)
+- [Das Skript zur Vorlesung](Skript-Programmierung-1.pdf)
 
 ## Über dieses Repository
 

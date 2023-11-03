@@ -65,6 +65,7 @@ public class PairOfDice {
     /**
      * Prints the dice pair in ASCII art.
      * see @dice.java for the representation of the single dice.
+     * This prints both dice line by line next to each other.
      */
 
     public void printDicePair() {
@@ -72,7 +73,7 @@ public class PairOfDice {
         String[] art2 = dice2.getDiceArt();
 
         for (int i = 0; i < art1.length; i++) {
-            System.out.println(art1[i] + "   " + art2[i]);
+            System.out.println(art1[i] + "\t" + art2[i]);
         }
     }
 
