@@ -68,6 +68,7 @@ public class Player {
         System.out.print("Enter new name for " + getName() + ": ");
         String name = scanner.nextLine();
         setName(name);
+        
     }
 
     public void setPointsThisRound(int points) {

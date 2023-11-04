@@ -34,6 +34,7 @@ public class PlayerCardApp {
                     System.out.println("ungültige Eingabe");
             } 
         } while (decision != 0);
+        scan.close();
 
     }
     
