@@ -18,6 +18,8 @@ import java.util.Scanner;
 
 public class Player {
 
+    private static final Scanner scanner = new Scanner(System.in);
+
     private int pointsThisRound;
     private int pointsTotal;
     private String name;
@@ -64,7 +66,6 @@ public class Player {
     }
 
     public void enterName() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter new name for " + getName() + ": ");
         String name = scanner.nextLine();
         setName(name);

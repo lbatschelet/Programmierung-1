@@ -18,6 +18,8 @@ import java.util.Scanner;
 
 public class PigGame {
 
+    private static final Scanner scanner = new Scanner(System.in);
+
     private Player player1 = new Player("Player 1");
     private Player player2 = new Player("Player 2");
     private Player playerToPlay;
@@ -49,7 +51,6 @@ public class PigGame {
 
         // Ask for game mode
         System.out.print("Choose mode: ");
-        Scanner scanner = new Scanner(System.in);
         int mode = scanner.nextInt();
         switch (mode) {
             case 1:
@@ -87,7 +88,6 @@ public class PigGame {
             this.player2.printPoints();
             System.out.println(this.playerToPlay.getName() + " is playing.");
             System.out.println("Press enter to roll the dice.");
-            Scanner scanner = new Scanner(System.in);
             scanner.nextLine();
             turn(playerToPlay.isComputer());
             changePlayerToPlay();
@@ -117,7 +117,6 @@ public class PigGame {
                 } else {
                     // Logic for a human player
                     System.out.println("Do you want to roll the Dice again? (y/n): ");
-                    Scanner scanner = new Scanner(System.in);
                     String another = scanner.next();
                     if ("n".equalsIgnoreCase(another)) {
                         this.playerToPlay.addPointsTotal(this.playerToPlay.getPointsThisRound());
@@ -179,7 +178,6 @@ public class PigGame {
         System.out.println("It took them " + (this.player1.hasWon(POINTS_TO_WIN) ? this.player1.getDiceRolls() : this.player2.getDiceRolls()) + " rolls.");
         System.out.println("----------");
         System.out.println("Do you want to play again? (y/n): ");
-        Scanner scanner = new Scanner(System.in);
         String another = scanner.next();
         if ("y".equalsIgnoreCase(another)) {
             this.player1.reset("Player 1");
