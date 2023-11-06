@@ -2,6 +2,8 @@
 *                Programmierung 1 HS 2020 - Serie 5-1                         * 
 \* ************************************************************************* */
 
+package game;
+
 import java.util.Arrays;
 
 
@@ -48,7 +50,7 @@ public class VierGewinnt
 		}
 		System.out.println( displayBoard( this.board ) );
 		if ( solved )
-			System.out.println( "Player " + players[ currentPlayer ].getToken() + " wins!" );
+			System.out.println( "Player " + players[ currentPlayer ].getToken() + ", " + players[currentPlayer].getPlayersName() + " wins!" );
 		else
 			System.out.println( "Draw! Game over." );
 	}
@@ -61,13 +63,23 @@ public class VierGewinnt
 	 * @return the row where the token landed 
 	 */
 	private int insertToken(int column, Token tok) {
+		// check if the column exists
+		// error handling seems unnecessary, but is asked for in the exercise
+		// error handling is done in the provided getNextColumn() method of the Player class
+		// TODO: ask how to handle errors in the exercise
+		if (column < 1 || column >= this.board.length) {
+			System.err.println("Error. This column doesn't exist. The programm will terminate");
+			System.exit(1);
+		}
 		for (int row = 0; row < this.board[column].length; row++ ) {
 			if (this.board[column][row] == Token.empty ) {
 				board[column][row] = tok;
 				return row;
 			}
 		}
-		return -1; // indicate that the column is full
+		System.err.println("Error. This column is full.");
+		System.exit(1);
+		return -1; // indicates that the column is full
 	}
 
 

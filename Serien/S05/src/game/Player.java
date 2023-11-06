@@ -2,6 +2,8 @@
 *                Programmierung 1 HS 2020 - Serie 5-1                         * 
 \* ************************************************************************* */
 
+package game;
+
 import java.util.Scanner;
 
 /** A human player class */
