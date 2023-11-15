@@ -1,4 +1,12 @@
 /**
+ * MatrixOperations.java
+ * 
+ * @autor   Lukas Batschelet (16-499-733)
+ * @date    2023-11-15
+ * @version 1.0
+ * @serie   5
+ * @aufgabe 2
+ * 
  * 2. Rechnen mit Matrizen
  * Anmerkungen:
  * - Diese Aufgabe erfordert den Gebrauch statischer Methoden und der
@@ -26,7 +34,7 @@
  *     | a00 a01 a02 |           | a00 a10 a20 |
  *     | a10 a11 a12 |           | a01 a11 a21 |
  *     | a20 a21 a22 |           | a02 a12 a22 |
-
+ *
  *     Ihre Methode sollte alle möglichen Werte von n berücksichtigen.
  *
  * (c) Schreiben Sie in der Klasse MatrixOperations eine statische Methode
