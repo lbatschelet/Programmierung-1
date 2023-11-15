@@ -42,6 +42,10 @@ public class VierGewinnt
 			int insertCol = players[ currentPlayer ].getNextColumn( getCopyOfBoard() );
 			// insert the token and get the row where it landed
 			int insertRow = this.insertToken( insertCol, players[ currentPlayer ].getToken() );
+			if ( insertRow == -1 ) {
+				System.err.println( "Error. This column is full! The program will terminate" );
+				System.exit( 1 );
+			}
 			// check if the game is over
 			solved = this.checkVierGewinnt( insertCol, insertRow );
 			//switch to other player
@@ -65,21 +69,21 @@ public class VierGewinnt
 	private int insertToken(int column, Token tok) {
 		// check if the column exists
 		// error handling seems unnecessary, but is asked for in the exercise
-		// error handling is done in the provided getNextColumn() method of the Player class
-		// TODO: ask how to handle errors in the exercise
-		if (column < 1 || column >= this.board.length) {
+		// error handling is allready done in the provided getNextColumn() method of the Player class
+
+		// check if the column exists
+		if (column < 0 || column >= this.board.length) {
 			System.err.println("Error. This column doesn't exist. The programm will terminate");
 			System.exit(1);
 		}
+
 		for (int row = 0; row < this.board[column].length; row++ ) {
 			if (this.board[column][row] == Token.empty ) {
 				board[column][row] = tok;
 				return row;
 			}
-		}
-		System.err.println("Error. This column is full.");
-		System.exit(1);
-		return -1; // indicates that the column is full
+		} return -1; // indicates that the column is full
+		
 	}
 
 

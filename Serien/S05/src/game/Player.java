@@ -30,7 +30,8 @@ public class Player
 		int column = -1;
 		while ( column < 0 || column >= board.length ) {
 			System.out.print( "Player " + this.token.toString()
-			                  + " choose a column between 1 and " + board.length + ": " );
+			                  + " " + this.getPlayersName()
+							  + " choose a column between 1 and " + board.length + ": " );
 			try {
 				column = Integer.parseInt( scan.nextLine() ) - 1;
 			} catch ( NumberFormatException e ) {
@@ -38,7 +39,6 @@ public class Player
 				System.out.println( "That is not even a number!" );
 			}
 			if ( column >= 0 && column < board.length ) {
-				int topRow = board[ 0 ].length - 1;
 				if ( isColFull( column, board ) ) {
 					System.out.println( "This column is full!" );
 					column = -1;

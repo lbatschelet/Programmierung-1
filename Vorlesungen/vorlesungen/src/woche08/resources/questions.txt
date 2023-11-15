@@ -1,0 +1,2 @@
+Mathematik;1+1;2;3
+Geographie;Was ist die Hauptstadt der Schweiz?;Bern;Zürich

@@ -55,25 +55,159 @@
 
 package matrizen;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class MatrixOperations {
 
-    // TODO: implement readMatrix
+    public static int[][] readMatrix(String url) throws FileNotFoundException {
 
-    public static int[][] readMatrix(String filename) {
-        return null;
+        // create scanner
+        Scanner fileScanner = new Scanner(new File(url));
+        Scanner lineScanner;
+
+        // create matrix
+
+        // get number of rows and columns
+        int rows = 0;
+        int columns = 0;
+
+        // get number of rows
+        while (fileScanner.hasNext()) {
+            fileScanner.nextLine();
+            rows++;
+        }
+
+        // reset scanner
+        fileScanner = new Scanner(new File(url));
+
+        while (fileScanner.hasNext()) {
+            String line = fileScanner.nextLine();
+            lineScanner = new Scanner(line);
+            lineScanner.useDelimiter(" ");
+            columns++;
+        }
+
+        // create matrix
+
+        int[][] matrix = new int[rows][columns];
+
+        // get matrix elements
+
+        // reset scanner
+
+        fileScanner = new Scanner(new File(url));
+
+        for (int i = 0; i < rows; i++) {
+            String line = fileScanner.nextLine();
+            lineScanner = new Scanner(line);
+            lineScanner.useDelimiter(" ");
+            for (int j = 0; j < columns; j++) {
+                matrix[i][j] = lineScanner.nextInt();
+            }
+        }
+
+
+        return matrix;
+        
     }
 
 
-    // TODO: implement transpose
 
     public static int[][] transpose(int[][] matrix) {
-        return null;
+
+        // check if matrix is quadratic
+        if (matrix.length != matrix[0].length) {
+            System.out.println("Matrix is not quadratic!");
+            return null;
+        }
+
+        // create new matrix
+        int[][] transposedMatrix = new int[matrix.length][matrix[0].length];
+
+        // transpose matrix
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length ; j++) {
+                transposedMatrix[i][j] = matrix[j][i];
+            }
+        }
+
+        return transposedMatrix;
     }
 
-    // TODO: implement product
 
     public static int[][] product(int[][] matrixA, int[][] matrixB) {
-        return null;
+        
+        // check if matrixA and matrixB have the same number of columns
+        if (matrixA[0].length != matrixB.length) {
+            System.out.println("Number of columns of matrixA does not match number of rows of matrixB!");
+            return null;
+        }
+
+        // create new matrix
+        int[][] productMatrix = new int[matrixA.length][matrixB[0].length];
+
+        // calculate product
+        for (int i = 0; i < matrixA.length; i++) {
+            for (int j = 0; j < matrixB[0].length; j++) {
+                for (int k = 0; k < matrixA[0].length; k++) {
+                    productMatrix[i][j] += matrixA[i][k] * matrixB[k][j];
+                }
+            }
+        }
+
+        return productMatrix;
+    }
+
+    public static void printMatrix(int[][] matrix) {
+
+        try {
+            // get number of rows and columns
+            int rows = matrix.length;
+            int columns = matrix[0].length;
+
+            // print matrix
+            for (int i = 0; i < rows; i++) {
+                System.out.print("| ");
+                for (int j = 0; j < columns ; j++) {
+                    System.out.print(matrix[i][j] + "\t");
+                }
+                System.out.println("|");
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Matrix is null! Cannot print matrix.");
+        }
+        
+    }
+
+    // helper method to input matrix from console (for testing purposes)
+    public static int[][] inputMatrix() {
+
+        // create scanner
+        Scanner scan = new Scanner(System.in);
+
+        // get number of rows and columns
+        System.out.print("Enter number of rows: ");
+        int rows = scan.nextInt();
+        System.out.print("Enter number of columns: ");
+        int columns = scan.nextInt();
+
+        // create matrix
+        int[][] matrix = new int[rows][columns];
+
+        // get matrix elements
+        System.out.println("Enter matrix elements:");
+        for (int i = 0; i < rows; i++) {
+            System.out.println("Row " + (i + 1) + ":");
+            for (int j = 0; j < columns; j++) {
+                matrix[i][j] = scan.nextInt();
+            }
+        }
+        scan.close();
+
+        return matrix;
+
     }
     
 }
