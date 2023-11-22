@@ -1,0 +1,394 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Vorlesung 06},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Vorlesung 06}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection{Aufgaben zu Kapitel 6}\label{aufgaben-zu-kapitel-6}
+
+\subsubsection{Welche Ausgabe erzeugt das folgende Fragment für die drei
+Fälle:}\label{welche-ausgabe-erzeugt-das-folgende-fragment-fur-die-drei-fuxe4lle}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{int\ num1\ =\ 9,\ num2\ =\ 10;}
+\item
+  \texttt{int\ num1\ =\ 11,\ num2\ =\ 10;}
+\item
+  \texttt{int\ num1\ =\ 13,\ num2\ =\ 10;}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{if (num1 \textless{} num2)}
+\NormalTok{    System.out.println("rot");}
+\NormalTok{else}
+\NormalTok{    if ((num1 {-} 2) \textless{} num2)}
+\NormalTok{        System.out.println("blau");}
+\NormalTok{    else}
+\NormalTok{        System.out.println("weiss");}
+\NormalTok{System.out.println("gelb");}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rot}
+\NormalTok{gelb}
+
+\NormalTok{blau}
+\NormalTok{gelb}
+
+\NormalTok{weiss}
+\NormalTok{gelb}
+
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Übersetzen Sie in eine
+switch-Anweisung:}\label{uxfcbersetzen-sie-in-eine-switch-anweisung}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{if (num == 1)}
+\NormalTok{    c = \textquotesingle{}A\textquotesingle{};}
+\NormalTok{else}
+\NormalTok{    if (num == 2)}
+\NormalTok{        c = \textquotesingle{}B\textquotesingle{};}
+\NormalTok{    else}
+\NormalTok{        if (num == 3)}
+\NormalTok{            c = \textquotesingle{}C\textquotesingle{};}
+\NormalTok{        else}
+\NormalTok{            c = \textquotesingle{}Z\textquotesingle{};}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{switch (num) \{}
+\NormalTok{    1 : c = \textquotesingle{}A\textquotesingle{}; break;}
+\NormalTok{    2 : c = \textquotesingle{}B\textquotesingle{}; break;}
+\NormalTok{    3 : c = \textquotesingle{}C\textquotesingle{}; break;}
+\NormalTok{    default : z = \textquotesingle{}Z\textquotesingle{}; break;}
+\NormalTok{\}}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Übersetzen in einen
+Conditional}\label{uxfcbersetzen-in-einen-conditional}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{System.out.println((val \textless{}= 100 ? "nicht " : "") + "grösser als 100.");}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{\texorpdfstring{\texttt{do}-loops}{do-loops}}\label{do-loops}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{int low = 0, high = 5;}
+\NormalTok{do \{}
+\NormalTok{    low++;}
+\NormalTok{    System.out.println(low);}
+\NormalTok{\} while (low \textless{} high);}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1}
+\NormalTok{2}
+\NormalTok{3}
+\NormalTok{4}
+\NormalTok{5}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{int low = 5, high = 5;}
+\NormalTok{do \{}
+\NormalTok{    System.out.println(low);}
+\NormalTok{    low++;}
+\NormalTok{\} while (low \textless{} high);}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{5}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Welche Ausgaben erzeugen folgende
+Schleifen?}\label{welche-ausgaben-erzeugen-folgende-schleifen}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{int max = 6;}
+\NormalTok{for (int i = 0; i \textless{} max; i++)}
+\NormalTok{    System.out.println(max + i);}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{6}
+\NormalTok{7}
+\NormalTok{8}
+\NormalTok{9}
+\NormalTok{10}
+\NormalTok{11}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{int val = 0;}
+\NormalTok{int num;}
+\NormalTok{for (num = 10; num \textless{}= 40; num+=10)}
+\NormalTok{    val += num;}
+\NormalTok{System.out.println(num);}
+\NormalTok{System.out.println(val);}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{50}
+\NormalTok{100}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{for (int i = 0; i \textless{}= 3; i++) \{}
+\NormalTok{    for (int j = i + 1; j \textgreater{} 0; j{-}{-})}
+\NormalTok{        System.out.print(i * j + " ");}
+\NormalTok{    System.out.println();}
+\NormalTok{\}}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{0}
+\NormalTok{2 1}
+\NormalTok{6 4 2}
+\NormalTok{12 9 6 3}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{\texorpdfstring{Machen Sie die Klasse
+\texttt{Box}generisch}{Machen Sie die Klasse Boxgenerisch}}\label{machen-sie-die-klasse-boxgenerisch}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{public class Box \{}
+
+\NormalTok{    private String content;}
+    
+\NormalTok{    public Box(String content) \{}
+\NormalTok{        this.content = content;}
+\NormalTok{    \}}
+    
+\NormalTok{    public String getContent() \{}
+\NormalTok{        return this.content;}
+\NormalTok{    \}}
+\NormalTok{\}}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{public class Box\textless{}T\textgreater{} \{}
+
+\NormalTok{    private T content;}
+    
+\NormalTok{    public Box(T content) \{}
+\NormalTok{        this.content = content;}
+\NormalTok{    \}}
+    
+\NormalTok{    public T getContent() \{}
+\NormalTok{        return this.content;}
+\NormalTok{    \}}
+\NormalTok{\}}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Instanziieren Sie eine Liste boxes, welche
+  \texttt{Box\textless{}String\textgreater{}} Objekte aufnehmen kann.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ArrayList\textless{}Box\textless{}String\textgreater{}\textgreater{} boxes = new ArrayList\textless{}Box\textless{}String\textgreater{}\textgreater{};}
+
+\NormalTok{for (Box\textless{}String\textgreater{} b :boxes)}
+\NormalTok{    System.out.println(b.getContent())}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{\texorpdfstring{Ergänzen Sie die Klasse \texttt{Pasta}
+mit einer Methode \texttt{equals} und einer Methode
+\texttt{compareTo}.}{Ergänzen Sie die Klasse Pasta mit einer Methode equals und einer Methode compareTo.}}\label{erguxe4nzen-sie-die-klasse-pasta-mit-einer-methode-equals-und-einer-methode-compareto.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{public class Pasta \{}
+
+\NormalTok{    private String name;}
+\NormalTok{    private double price;}
+
+\NormalTok{    public Pasta(String name, double price) \{}
+\NormalTok{        this.name = name;}
+\NormalTok{        this.price = price;}
+\NormalTok{\}}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{public class Pasta \{}
+
+\NormalTok{    private String name;}
+\NormalTok{    private double price;}
+
+\NormalTok{    public Pasta(String name, double price) \{}
+\NormalTok{        this.name = name;}
+\NormalTok{        this.price = price;}
+
+\NormalTok{    public boolean equals(Pasta other) \{}
+\NormalTok{    return (this.name.equals(other.name));}
+\NormalTok{    \}}
+
+\NormalTok{    public int compareTo(Pasta other) \{}
+\NormalTok{    if (this.price == other.price)}
+\NormalTok{        return 0;}
+\NormalTok{    else if (this.price \textless{} other.price)}
+\NormalTok{            return 1;}
+\NormalTok{        else}
+\NormalTok{            return {-}1;}
+\NormalTok{\}}
+\NormalTok{Copy}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}

@@ -110,11 +110,16 @@ public class MatrixTest {
         System.out.println("Product Matrix 2 x 1:");
         MatrixOperations.printMatrix(MatrixOperations.product(matrix2, matrix1));
 
+        System.out.println("Product Matrix 3 X 1:");
+        MatrixOperations.printMatrix(MatrixOperations.product(matrix3, matrix1));
+
         System.out.println("Read matrix:");
         MatrixOperations.printMatrix(MatrixOperations.readMatrix(FILE_PATH_NAME));
 
         System.out.println("Transpose read matrix:");
         MatrixOperations.printMatrix(MatrixOperations.transpose(MatrixOperations.readMatrix(FILE_PATH_NAME)));
+
+
 
 
     }
