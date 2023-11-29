@@ -5,7 +5,7 @@
 
 package aufgabe02;
 
-public class Book
+public class Book implements IArticle
 {
 	private int id;
 	private String title;

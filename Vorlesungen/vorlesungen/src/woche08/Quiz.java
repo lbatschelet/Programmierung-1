@@ -34,6 +34,7 @@ public class Quiz {
             another = scan.nextLine();
 
         } while (another.equalsIgnoreCase("y"));
+        scan.close();
 
         
     }

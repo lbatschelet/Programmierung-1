@@ -14,6 +14,9 @@ public class Store
 	private ArrayList<IArticle> articles = new ArrayList<IArticle>();
 	private ArrayList<Order> orders = new ArrayList<Order>();
 
+	// I just made this static, to avoid error messages because of unclosed scanner objects.
+	private static final Scanner scn = new Scanner(System.in);
+
 	/** starts the menu */
 	public void interactWithUser()
 	{
@@ -25,7 +28,6 @@ public class Store
 			System.out.println( "|  3. Show all orders        9. Exit                          |" );
 			System.out.println( "|                                                             |" );
 			System.out.println( " =============================================================" );
-			Scanner scn = new Scanner( System.in );
 			System.out.print( "\nWhat do you want to do? " );
 			answer = scn.nextLine();
 			if ( answer.equals( "1" ) ) {
@@ -50,7 +52,6 @@ public class Store
 	{
 		Order order = new Order();
 		listArticles();
-		Scanner scn = new Scanner( System.in );
 		System.out.print( "\nEnter id of ordered article (press x when done): " );
 		String input = scn.nextLine();
 		while ( !input.equalsIgnoreCase( "x" ) ) {

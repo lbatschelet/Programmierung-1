@@ -2,7 +2,6 @@ package aufgabe01;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 //***************************************************
 //Datei fuer Serie 6, Teilaufgabe 1
