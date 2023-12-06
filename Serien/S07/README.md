@@ -31,7 +31,7 @@ Abgabe: 08.12.2023 13:00
 > 	 `private void say()`
 
 <details>
-	<summary>Mögliche Lösung anzeigen</summary>
+	<summary>Lösung anzeigen</summary>
 
 **Lösung:**
 1. unterschiedliche Signatur
