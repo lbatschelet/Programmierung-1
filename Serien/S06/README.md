@@ -15,7 +15,7 @@ Lukas Batschelet (16-499-733)
 
 ## Implementationsaufgaben
 
-### 1. 
+### 1. Aggregationsbasierte Bestellklasse
 
 Laden Sie von ILIAS die Datei `Book.java` herunter (→ Serie 6 Vorlagen → Aufgabe 1) (verwenden Sie nicht Ihre Datei aus Serie 3).
 Schreiben Sie eine Klasse `Order` für Buchbestellungen. Ein `Order`-Objekt soll aus einer id, einem Kundennamen `customerName`, einer Kundenadresse `customerAddress` und beliebig vielen `Book`-Objekten bestehen. Zudem soll die Klasse `Order` die Methoden `toString()` und `addBook(...)` enthalten.
@@ -25,7 +25,6 @@ Schreiben Sie zudem einen Konstruktor `Order()`, der die Instanzvariable `id` au
 Verwenden Sie anschließend die gegebene Klasse `Test` (ILIAS: Übungen → Serie 6 → Serie 6 Vorlagen → Aufgabe 1) um Ihre Klasse `Order` zu testen. Die Ausgabe von `Test` soll exakt so aussehen:
 
 ```
-
 Order id: 1, Customer: Sophie Muster, Mittelstrasse 10, 3011 Bern
 1, Homo Faber, Max Frisch, 01.01.1957
 2, Harry Potter, J.K. Rowling, 25.07.2000
@@ -34,14 +33,29 @@ Order id: 1, Customer: Sophie Muster, Mittelstrasse 10, 3011 Bern
 4, Freedom, Jonathan Franzen, 08.06.2010
 ```
 
-### Hinweise:
+**Hinweise:**
 
 - Programmieren Sie nur Getter und Setter, die tatsächlich verwendet werden.
 - Die Klasse `Test` darf nicht verändert werden.
 
-### 2.
+
+<details>
+    <summary>Mögliche Lösung anzeigen</summary>
+
+#### Mögliche Lösung
+
+Klassen:
+- [Book.java](src/aufgabe01/Book.java)
+- [Order.java](src/aufgabe01/Order.java)
+- [Test.java](src/aufgabe01/Test.java)
+
+</details>
+
+
+### 2. Polymorphe Artikelverwaltung
 
 Laden Sie von ILIAS die Datei `Store.java` und `Book.java` (nicht dasselbe `Book.java` wie in Teilaufgabe 1) herunter. Das Programm `Store` verfügt über ein Menü, anhand dessen man neue Bestellung erfassen kann. Bestellungen bestehen aus (beliebig vielen) Büchern, DVDs und CDs:
+
 ```
 =============================================================
 | 1. Create a new order 2. Show all registered articles |
@@ -61,6 +75,7 @@ Enter id of ordered article (press x when done): x
 Enter the customer’s name: Susi Meier
 Enter the customer’s address: Mittelstrasse 10, 3011 Bern
 ```
+
 Ihre Aufgabe ist es, dafür zu sorgen, dass das Programm `Store` einwandfrei funktioniert. `Store` selbst darf nicht verändert werden.
 
 Sie müssen also folgende Klassen und Schnittstellen programmieren:
@@ -70,7 +85,25 @@ Sie müssen also folgende Klassen und Schnittstellen programmieren:
 3. Passen Sie die Klasse aus Aufgabe 1 an. Welche Methoden die Klasse `Order` bereitstellen muss, können Sie der Klasse `Store` entnehmen. Insbesondere muss `Order` eine Methode `getOrderedArticles()` besitzen. Definieren sie dessen Rückgabetyp als `Iterable<IArticle>`.
 4. Zeichnen Sie ein UML-Klassendiagramm aller involvierten Klassen und Schnittstellen.
 
-### 3.
+<details>
+    <summary>Mögliche Lösung anzeigen</summary>
+
+#### Mögliche Lösung:
+
+1. Schnittstelle `IArticle` und Klasse `Book`:
+    - [IArticle.java](src/aufgabe02/IArticle.java)
+    - [Book.java](src/aufgabe02/Book.java)
+2. Klassen `DVD` und `CD`:
+    - [DVD.java](src/aufgabe02/DVD.java)
+    - [CD.java](src/aufgabe02/CD.java)
+3. Klasse `Order` basierend auf der Klasse `Store`aus Aufgabe 1:
+    - [Order.java](src/aufgabe02/Order.java)
+4. UML-Klassendiagramm:
+    - ![UML-Klassendiagramm](20231129_P1S6A2_UML.png)
+
+</details>
+
+### 3. Preiskalkulation mit Vererbung
 
 Sie sollen für eine Firma, welche Möbel herstellt, ein System entwickeln. Die Firma will sehen, ob sich dieses System bewährt, deshalb soll zunächst nur die Preisberechnung für die Tische implementiert werden. Falls die Firmenleitung zufrieden ist, sollen mehr Möbelstücke und mehr Funktionalitäten integriert werden. Implementieren Sie für dieses System `Furniture.java`, `Material.java` und `Table.java` nach dem folgenden UML-Diagramm (FurnitureTest.java ist auf Ilias verfügbar):
 
@@ -110,8 +143,21 @@ classDiagram
 ```
 
 Anweisungen:
+
 1. Die Klassen sollen nach diesem UML-Diagramm implementiert werden ohne zusätzliche Variablen oder Methoden zu verwenden.
 2. Vergeben Sie jedem Objekt in der Aufzählung einen anderen Preis pro Quadratmeter (speichern Sie diese Information in einer Instanzvariablen )
 3. Erstellen Sie einen passenden Konstruktor für `Furniture` und `Table`. Der Konstruktor von `Table` soll dabei den Konstruktor von `Furniture` verwenden.
 4. Die Variable `pricePerHour` gibt die Kosten pro Stunde an für die Anfertigung des Möbelstückes. `workedHours` gibt die Anzahl Stunden an, welche nötig waren, um das Möbelstück fertigzustellen. Die Methode `calculateEffort()` soll nun den Aufwand für die Herstellung eines Möbelstückes berechnen.
 5. Da in der Aufwandsberechnung noch nicht der Materialpreis inbegriffen ist, soll in der Methode `totalPrice()` zunächst mithilfe der Methode aus `Furniture` den Preis für den Aufwand berechnet werden. Danach wird der Materialpreis berechnet (gegeben durch multipliziert mit dem Quadratmeterpreis des Materials) und zum Aufwand dazu addiert.
+
+<details>
+    <summary>Mögliche Lösung anzeigen</summary>
+
+#### Mögliche Lösung:
+
+- [Furniture.java](src/aufgabe03/Furniture.java)
+- [Material.java](src/aufgabe03/Material.java)
+- [Table.java](src/aufgabe03/Table.java)
+- [FurnitureTest.java](src/aufgabe03/FurnitureTest.java)
+
+</details>
