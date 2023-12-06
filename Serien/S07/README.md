@@ -15,7 +15,7 @@ Abgabe: 08.12.2023 13:00
 
 ## Theorieaufgaben
 
-> [!TIP] (1) Methodenköpfe
+> **(1) Methodenköpfe**
 >  Welche der folgenden Methodenköpfe repräsentieren tatsächlich unterschiedliche Signaturen:
 > 1. `public String describe(String name, int count)`
 >      `public String describe(int count, String name)`
@@ -43,7 +43,7 @@ Abgabe: 08.12.2023 13:00
 
 </details>
 
-> [!TIP] (2) BizzBuzz
+> **(2) BizzBuzz**
 > Geben Sie einen Algorithmus in Pseudo-Code an, der für die ganzen Zahlen von 1 bis 100 überprüft, ob diese durch 3 und/oder durch 5 teilbar sind. Falls die Zahl weder durch 3 noch durch 5 teilbar ist, soll die Zahl ausgegeben werden. Ist die aktuelle Zahl durch 3 teilbar, soll statt der Zahl “Bizz” ausgegeben werden. Ist die aktuelle Zahl durch 5 teilbar, soll statt der Zahl “Buzz” ausgegeben werden. Ist die Zahl sowohl durch 3 als auch durch 5 teilbar, soll “BizzBuzz” ausgegeben werden.
 
 <details>
@@ -66,7 +66,7 @@ FÜR jede Zahl i von 1 bis 100:
 </details>
 
 
-> [!TIP] (3) Addition zweier Binärzahlen
+> **(3) Addition zweier Binärzahlen**
 > Wir betrachten das Problem der Addition von zwei n-Bit Binärzahlen, die in zwei Arrays A und B der Länge n gespeichert sind. Die Summe der beiden Zahlen soll in einem Array C der Länge n + 1 gespeichert werden. Geben Sie zur Lösung dieses Problems einen Algorithmus in Pseudo-Code an.  
 > Beispiel: Mit A = 101011 und B = 111110 soll C = 1101001 sein.
 
@@ -96,7 +96,7 @@ DEFINIERE Algorithmus AddiereBinär(A, B)
 
 </details>
 
-> [!TIP] (4) Pseudocode übersetzten
+> **(4) Pseudocode übersetzten**
 > Übersetzen Sie folgenden Pseudocode in eine statische Methode. Hinweis: Schreiben Sie eine Hilfsmethode für das Tauschen zweier Elemente in einer Liste.
 > 
 > **Algorithm 1 shuffle(Liste list mit ganzen Zahlen)**
@@ -135,9 +135,7 @@ private static void swap(List<Integer> list, int i, int j) {
 
 </details>
 
-> [!TIP] (5) Welche Ausgabe erzeugt folgendes Programm:
-> 
-> 
+> **(5) Welche Ausgabe erzeugt folgendes Programm:** 
 > 
 > ```java
 > public class Parameter {
@@ -187,7 +185,7 @@ Python 1.1
 
 </details>
 
-> [!TIP] (6) Stack nach Operationen
+> **(6) Stack nach Operationen**
 > Wie sieht der Stack s aus, nachdem folgende Operationen durchgeführt worden sind:
 > ```
 > s.push(5);
@@ -212,7 +210,7 @@ Python 1.1
 </details>
 
 
-> [!TIP] (7) Queue nach Operationen
+> **(7) Queue nach Operationen**
 > Wie sieht eine Queue q aus, nachdem folgende Operationen durchgeführt worden sind:
 > ```
 > q.offer(5);
@@ -237,7 +235,7 @@ Python 1.1
 
 </details>
 
-> [!TIP] (8) Methode `set` in `OwnArrayList` schreiben
+> **(8) Methode `set` in `OwnArrayList` schreiben**
 > Betrachten Sie die Klasse OwnArrayList aus dem Skript. Schreiben Sie eine Methode `set(int index, Object object)`, welche das Element an Position index in der aktuellen Liste mit dem Element object überschreibt. Im Erfolgsfall geben Sie true zurück – falls der Parameter index zu groß ist (größer als die aktuelle Liste), geben Sie false zurück.
 
 <details>
@@ -257,7 +255,7 @@ public boolean set(int index, Object object){
 
 </details>
 
-> [!TIP] (9) Methode `size` in `OwnLinkedList` schreiben
+> **(9) Methode `size` in `OwnLinkedList` schreiben**
 > Betrachten Sie die Klassen Node und OwnLinkedList aus dem Skript. Schreiben Sie eine Methode `size()`, welche die Größe der Liste zurückgibt.
 
 <details>
@@ -282,7 +280,7 @@ public int size(){
 </details>
 
 
-> [!TIP] (10) Methoden `get` und `set` in der Schnittstelle Collection
+> **(10) Methoden `get` und `set` in der Schnittstelle Collection**
 > Weshalb werden die Methoden `get` und `set` nicht in der Schnittstelle `Collection` vorgegeben?
 
 <details>
