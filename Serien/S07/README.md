@@ -201,7 +201,7 @@ s.push(72);
 s.push(37);
 s.push(15);
 s.pop();
-``
+```
 <details>
 	<summary>Lösung anzeigen</summary>
 
