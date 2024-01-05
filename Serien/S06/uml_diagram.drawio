@@ -1,0 +1,36 @@
+<mxfile>
+<diagram id="0">
+    <mxGraphModel>
+        <root>
+            <mxCell id="0"/>
+            <mxCell id="1" parent="0"/>
+            <!-- Furniture class -->
+            <mxCell id="2" value="Furniture" style="text;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+                <mxGeometry x="100" y="50" width="160" height="120" as="geometry"/>
+            </mxCell>
+            <!-- Table class -->
+            <mxCell id="3" value="Table" style="text;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+                <mxGeometry x="300" y="200" width="160" height="120" as="geometry"/>
+            </mxCell>
+            <!-- FurnitureTest class -->
+            <mxCell id="4" value="FurnitureTest" style="text;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+                <mxGeometry x="500" y="50" width="160" height="120" as="geometry"/>
+            </mxCell>
+            <!-- Material enum -->
+            <mxCell id="5" value="Material" style="text;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1">
+                <mxGeometry x="700" y="200" width="160" height="120" as="geometry"/>
+            </mxCell>
+            <!-- Inheritance and Association edges -->
+            <mxCell id="6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" source="2" target="3" parent="1">
+                <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" source="2" target="5" parent="1">
+                <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+            <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" source="4" target="3" parent="1">
+                <mxGeometry relative="1" as="geometry"/>
+            </mxCell>
+        </root>
+    </mxGraphModel>
+</diagram>
+</mxfile>
