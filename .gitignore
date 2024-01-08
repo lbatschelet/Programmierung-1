@@ -9,5 +9,8 @@
 *.out
 *.synctex.gz
 *.toc
+*.pygtex
+*.pygstyle
+*.pyg
 
 Zusammenfassung/_minted-P1_23HS_Zusammenfassung/

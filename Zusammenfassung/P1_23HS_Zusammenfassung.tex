@@ -694,6 +694,254 @@ System.out.println(i2.compareTo(i3)); // 15
 \end{javacodebox}
 
 
+\chapter{Kapitel 7}
+
+\section{tl;dr Kapitel 7-8}
+
+\begin{itemize}
+	\item \textit{Arrays} ermöglichen das Deklarieren einer \textit{einzigen} Variablen eines Typs, die dann \textit{mehrere Werte} dieses Typs speichern kann.
+	\item Arrays haben eine \textit{feste, unveränderliche Größe} (Konstante \texttt{length}), die bei der Instanziierung angegeben werden muss.
+\end{itemize}
+
+\begin{javacodebox}
+int num1, num2, num3, num4, num5, num6;
+\end{javacodebox}
+
+\begin{javacodebox}
+int[] nums = new int[6];
+\end{javacodebox}
+
+\begin{javacodebox}
+int l = nums.length;
+\end{javacodebox}
+
+\begin{itemize}
+	\item Auf einzelne Elemente eines Arrays greift man mit einem \textit{Index} innerhalb eckiger Klammern zu.
+\end{itemize}
+
+\begin{javacodebox}
+for (int i = 0; i < nums.length; i++) {
+	System.out.println(nums[i]);
+}
+\end{javacodebox}
+
+\begin{itemize}
+	\item Mit \textit{Initialisierungslisten} können Arrays instanziiert und mit Werten gefüllt werden.
+\end{itemize}
+
+\begin{javacodebox}
+int[] nums = {1, 2, 3, 4};
+String[] names = {"Goodbye", "Hello", "Hi", "Howdy"};
+\end{javacodebox}
+
+\begin{itemize}
+	\item Auf Methoden der in einem Array gespeicherten Objekte kann man über \textit{Array-Referenzen} zugreifen.
+\end{itemize}
+
+\begin{javacodebox}
+for (int i = 0; i < names.length; i++) {
+	names[i] = names[i].toUpperCase();
+}
+\end{javacodebox}
+
+\begin{itemize}
+	\item Der Parameter der Methode \texttt{main} ist ein \texttt{String[]}. Dies sind \textit{Programmparameter}, die beim Start des Programmes von „Außen“ mitgegeben werden können.
+\end{itemize}
+
+\begin{javacodebox}
+public static void main(String[] args) {
+	String language = args[0];
+	String version = args[1];
+	String author = args[2];
+}
+\end{javacodebox}
+
+\begin{itemize}
+	\item Methoden können mit \textit{variablen Parameterlisten} umgehen.
+\end{itemize}
+
+\begin{javacodebox}
+public static int min(int first, int ... others) {
+	int min = first;
+	for (int num : others) {
+		min = Math.min(min, num);
+	}
+	return min;
+}
+\end{javacodebox}
+
+\begin{javacodebox}
+public class Greetings {
+	private String primaryGreeting;
+	private String[] greetings;
+
+	public Greetings(String primaryGreeting, String ... otherGreetings) {
+		this.primaryGreeting = primaryGreeting;
+		this.greetings = otherGreetings;
+	}
+}
+\end{javacodebox}
+
+\begin{itemize}
+	\item Zweidimensionale Arrays sind Arrays aus Arrays.
+\end{itemize}
+
+\begin{javacodebox}
+int[][] table = new int[100][5];
+String[][] names = {{"Anne", "Barbara", "Cathrine"}, {"Danny", "Emilie", "Fanny"}};
+\end{javacodebox}
+
+\begin{itemize}
+	\item Für Referenzen auf Elemente in zweidimensionalen Arrays werden zwei Indizes benötigt.
+\end{itemize}
+
+\begin{javacodebox}
+System.out.println(names[0][2]);
+
+for (int row = 0; row < names.length; row++) {
+	for (int col = 0; col < names[row].length; col++) {
+		names[row][col] = "Hannes";
+	}
+}
+\end{javacodebox}
+
+\subsection{enum}
+
+\begin{itemize}
+	\item Ein \texttt{enum} zählt \textit{alle} zulässigen Werte eines Typs auf.
+\end{itemize}
+
+\begin{javacodebox}
+public enum Category {
+	Mathematik, Geographie
+}
+\end{javacodebox}
+
+\begin{javacodebox}
+public enum Category {
+	Mathematik(10), Geographie(3);
+
+	private int points;
+
+	private Category(int points) {
+		this.points = points;
+	}
+}
+\end{javacodebox}
+
+\begin{itemize}
+	\item Jedes \texttt{enum} Objekt besitzt Methoden (wie z.B. \texttt{name()}).
+	\item Jede \texttt{enum} Klasse besitzt statische Methoden (wie z.B. \texttt{values()}).
+\end{itemize}
+
+\begin{javacodebox}
+Category[] categories = Category.values();
+for (Category category : categories) {
+	System.out.println(category.name());
+}
+\end{javacodebox}
+
+\subsection{Statische Variablen}
+
+\begin{itemize}
+	\item \textit{Statische Variablen} werden von allen Instanzen geteilt (es existiert also nur \textit{eine} Kopie der Variablen für alle Objekte).
+\end{itemize}
+
+\begin{javacodebox}
+public class Person {
+	public static int globalCount = 0;
+	private int id;
+
+	public Person() {
+		this.id = Person.globalCount++;
+	}
+}
+\end{javacodebox}
+
+\begin{itemize}
+	\item Statische Methoden werden direkt aufgerufen, ohne vorher ein Objekt zu instanzieren.
+\end{itemize}
+
+\begin{javacodebox}
+Functions.generateRandoms();
+
+public static int[] generateRandoms() {
+	// Macht etwas
+}
+\end{javacodebox}
+
+\subsection{Abhängigkeiten}
+
+\subsubsection{Selbstabhängig}
+
+\begin{itemize}
+	\item Eine Klasse kann von sich selbst abhängig sein.
+\end{itemize}
+
+\begin{javacodebox}
+Person p1 = new Person("Emilie");
+Person p2 = new Person("Ava");
+Person p3 = new Person("Maya");
+
+p1.knows(p2);
+p1.knows(p3);
+
+System.out.println(p1.getFriends()); // [Ava, Maya]
+\end{javacodebox}
+
+\begin{javacodebox}
+public class Person {
+	private String name;
+	private ArrayList<Person> friends;
+
+	public Person(String name) {
+		this.name = name;
+		this.friends = new ArrayList<Person>();
+	}
+
+	public void knows(Person other) {
+		this.friends.add(other);
+	}
+
+	public String toString() {
+		return this.name;
+	}
+
+	public ArrayList<Person> getFriends() {
+		return this.friends;
+	}
+}
+\end{javacodebox}
+
+\subsubsection{Aggregation}
+
+\begin{itemize}
+	\item Aggregation := Ein Objekt besteht z.T. aus anderen Objekten.
+\end{itemize}
+
+\begin{javacodebox}
+public class Person {
+    private String name;
+    private Address address;
+
+    public Person(String name, Address address) {
+        this.name = name;
+        this.address = address;
+    }
+}
+
+public class Address {
+    private String street;
+    private int zipCode;
+
+    public Address(String street, int zipCode) {
+        this.street = street;
+        this.zipCode = zipCode;
+    }
+}
+\end{javacodebox}
+
+
 
 
 
